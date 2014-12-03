@@ -11,4 +11,10 @@ public interface WishService {
 	public Wish getWishById(int id);
 
 	List<Wish> getAllWishes();
+
+	List<Wish> getAllWishesByRacfId(String employeeRacfId);
+
+	int registerForWish(Wish wish);
+
+	int createWish(Wish wish);
 }

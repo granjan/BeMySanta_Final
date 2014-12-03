@@ -49,4 +49,35 @@ public class WishRestService {
 		return allWishes;
 	}
 
+	@GET
+	@Path("getByRacfId/{employeeRacfId}")
+	public List<Wish> getAllWishesByRacfId(
+			@PathParam("employeeRacfId") String employeeRacfId) {
+		List<Wish> allWishes = new ArrayList<Wish>();
+		allWishes = wishService.getAllWishesByRacfId(employeeRacfId);
+		return allWishes;
+	}
+
+	@POST
+	@Path("registerWish/{wishId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Wish registerForWish(Wish wish) {
+		Wish registeredWish = new Wish();
+		int wishId = wishService.registerForWish(wish);
+		registeredWish = wishService.getWishById(wishId);
+		return registeredWish;
+	}
+
+	@POST
+	@Path("createWish/{wishId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Wish createWish(Wish wish) {
+		Wish registeredWish = new Wish();
+		int wishId = wishService.registerForWish(wish);
+		registeredWish = wishService.getWishById(wishId);
+		return registeredWish;
+	}
+
 }

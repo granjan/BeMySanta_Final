@@ -7,7 +7,7 @@ import com.examples.disha.domain.Wish;
 
 public class DBInsertOperations {
 
-	public void insertWish(Wish wish, String dataBase) {
+	public int insertWish(Wish wish, String dataBase) {
 
 		try {
 			Connection connection = new CreateConnection()
@@ -34,10 +34,12 @@ public class DBInsertOperations {
 			// execute the preparedstatement
 			preparedStmt.execute();
 			connection.close();
+			return wish.getWishId();
 		} catch (Exception e) {
 			System.err.println("Cannot connect to database server");
 			e.printStackTrace();
 		}
+		return -1;
 	}
 
 }

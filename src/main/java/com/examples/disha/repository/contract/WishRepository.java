@@ -6,7 +6,7 @@ import com.examples.disha.domain.Wish;
 
 public interface WishRepository {
 
-	 List<Wish> getWishes();
+	List<Wish> getWishes();
 
 	/**
 	 * Returns a Wish given its id
@@ -17,4 +17,10 @@ public interface WishRepository {
 	Wish getWishById(int id);
 
 	List<Wish> getAllWishes();
+
+	List<Wish> getAllWishesByRacfId(String employeeRacfId);
+
+	int registerForWish(Wish wish);
+
+	int createWish(Wish wish);
 }

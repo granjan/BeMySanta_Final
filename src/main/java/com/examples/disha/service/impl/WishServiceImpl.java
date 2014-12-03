@@ -36,4 +36,23 @@ public class WishServiceImpl implements WishService {
 		allWishes = wishRepository.getAllWishes();
 		return allWishes;
 	}
+	
+	@Override
+	public List<Wish> getAllWishesByRacfId(String employeeRacfId) {
+		List<Wish> allWishes = new ArrayList<Wish>();
+		allWishes = wishRepository.getAllWishesByRacfId(employeeRacfId);
+		return allWishes;
+	}
+	
+	@Override
+	public int registerForWish(Wish wish) {
+		int updatedWishId = wishRepository.registerForWish(wish);
+		return updatedWishId;
+	}
+	
+	@Override
+	public int createWish(Wish wish) {
+		int createdWishId = wishRepository.createWish(wish);
+		return createdWishId;
+	}
 }
