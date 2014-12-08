@@ -1,0 +1,57 @@
+<div>
+	<div id="searchDiv" style="margin-left: 30rem;">
+		<form id="search-form">
+			<input id="searchText" type="text" ng-model="inputWishId" /> <input
+				id="submitText" type="submit" value="Search"
+				ng-click="getWish(inputWishId)">
+		</form>
+	</div>
+
+	<div id="wishesContainer">
+		<table id="wishTable" class="wishesTable">
+			<thead>
+				<tr>
+					<td colspan=12>DISCLAIMER: ALL DATA PROVIDED 'AS IS' FOR DEMO
+						PURPOSE ONLY</td>
+				</tr>
+				<tr>
+					<th>WishId</th>
+					<th>Child Name</th>
+					<th>Gender</th>
+					<th>Child Age</th>
+					<th>Wish</th>
+					<th>Employee Name</th>
+					<th>Employee RacfId</th>
+					<th>Building</th>
+					<th>Floor</th>
+					<th>Desk</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+
+			<!-- TABLE BODY: MAIN CONTENT-->
+			<tbody>
+				<tr ng-model="wishes">
+					<td>{{wishes.wishId}}</td>
+					<td>{{wishes.childName}}</td>
+					<td>{{wishes.childGender}}</td>
+					<td>{{wishes.childAge}}</td>
+					<td>{{wishes.wish}}</td>
+					<td>{{wishes.employeeName}}</td>
+					<td>{{wishes.employeeRacfId}}</td>
+					<td>{{wishes.employeeBuilding}}</td>
+					<td>{{wishes.floor}}</td>
+					<td>{{wishes.employeeDeskNumber}}</td>
+					<td>{{wishes.wishStatus}}</td>
+				</tr>
+			</tbody>
+
+			<!-- TABLE FOOTER-->
+			<tfoot>
+				<tr>
+					<td colspan="10">Copyright &#9400 2014 Disha Works.</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>

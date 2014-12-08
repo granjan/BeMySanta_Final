@@ -23,4 +23,10 @@ public interface WishRepository {
 	int registerForWish(Wish wish);
 
 	int createWish(Wish wish);
+
+	List<Wish> getAllInompleteWishes();
+
+	List<Wish> getAllRegisteredWishes();
+
+	List<Wish> getAllCompleteWishes();
 }

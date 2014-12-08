@@ -11,15 +11,16 @@ public class DBUpdateOperations {
 		try {
 			Connection connection = new CreateConnection()
 					.getConnection(dataBase);
-			String registerWishQuery = "Update wish set wishStatus = ?, employeeName = ?, employeeRacfId = ?, employeeBuilding = ?, employeeDeskNumber = ? where wishId = ?";
+			String registerWishQuery = "Update wish set wishStatus = ?, employeeName = ?, employeeEmail=?, employeeRacfId = ?, employeeBuilding = ?, employeeDeskNumber = ? where wishId = ?";
 			PreparedStatement preparedStmt = connection
 					.prepareStatement(registerWishQuery);
 			preparedStmt.setString(1, "REGISTERED");
 			preparedStmt.setString(2, wish.getEmployeeName());
-			preparedStmt.setString(3, wish.getEmployeeRacfId());
-			preparedStmt.setString(4, wish.getEmployeeBuilding());
-			preparedStmt.setString(5, wish.getEmployeeDeskNumber());
-			preparedStmt.setInt(6, wish.getWishId());
+			preparedStmt.setString(3, wish.getEmployeeEmail());
+			preparedStmt.setString(4, wish.getEmployeeRacfId());
+			preparedStmt.setString(5, wish.getEmployeeBuilding());
+			preparedStmt.setString(6, wish.getEmployeeDeskNumber());
+			preparedStmt.setInt(7, wish.getWishId());
 
 			preparedStmt.executeUpdate();
 

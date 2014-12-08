@@ -1,0 +1,162 @@
+<div id="wishesContainer" ng-model="wishes"
+	ng-show="!wishRegisterRequest">
+	<table id="wishTable" class="wishesTable">
+		<thead>
+			<tr>
+				<td colspan=12>DISCLAIMER: ALL DATA PROVIDED 'AS IS' FOR DEMO
+					PURPOSE ONLY</td>
+			</tr>
+			<tr>
+				<th>WishId</th>
+				<th>Child Name</th>
+				<th>Gender</th>
+				<th>Child Age</th>
+				<th>Wish</th>
+				<th>Employee Name</th>
+				<th>Employee RacfId</th>
+				<th>Building</th>
+				<th>Floor</th>
+				<th>Desk</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+
+		<!-- TABLE BODY: MAIN CONTENT-->
+		<tbody>
+			<tr ng-repeat="wish in wishes">
+				<td>{{wish.wishId}}</td>
+				<td>{{wish.childName}}</td>
+				<td>{{wish.childGender}}</td>
+				<td>{{wish.childAge}}</td>
+				<td>{{wish.wish}}</td>
+				<td>{{wish.employeeName}}</td>
+				<td>{{wish.employeeEmail}}</td>
+				<td>{{wish.employeeRacfId}}</td>
+				<td>{{wish.employeeBuilding}}</td>
+				<td>{{wish.floor}}</td>
+				<td>{{wish.employeeDeskNumber}}</td>
+				<td>{{wish.wishStatus}}</td>
+				<td><input id="submitWish" value="Register" type="submit"
+					ng-click="registerWishForm(wish)">
+					</button></td>
+			</tr>
+		</tbody>
+
+		<!-- TABLE FOOTER-->
+		<tfoot>
+			<tr>
+				<td colspan="10">Copyright &#9400 2014 Disha Works.</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+<div ng-show="wishRegisterRequest">
+
+	<br /> <br /> <span class="notify" style="margin-left: 36%;">
+		<span class="symbol icon-info"></span> {{message}} <a href="#/wishes"><span>Click
+				Here to go back to wish list.</span></a>
+	</span>
+
+	<section id="container" ng-show="!wishRegistered">
+		<form name="hongkiat" id="hongkiat-form" method="put"
+			ng-model="wishToRegister">
+			<div id="wrapping" class="clearfix">
+				<section id="aligned">
+					<input type="text" name="wishId" id="wishId" placeholder="Wish Id"
+						tabindex="11" class="txtinput" disabled="true"
+						ng-model="wishToRegister.wishId"> <input type="text"
+						name="childName" id="childName" placeholder="Child Name"
+						autocomplete="off" tabindex="1" class="txtinput" disabled="true"
+						ng-model="wishToRegister.childName"> <input type="text"
+						name="childAge" id="childAge" placeholder="Child Age"
+						autocomplete="off" tabindex="2" class="txtinput" disabled="true"
+						ng-model="wishToRegister.childAge"> <input type="text"
+						name="gender" id="gender" placeholder="Male/Female"
+						autocomplete="off" tabindex="3" class="txtinput" disabled="true"
+						ng-model="wishToRegister.childGender"> <input type="text"
+						name="charityName" id="charityName" placeholder="Charity Name"
+						autocomplete="off" tabindex="4" class="txtinput" disabled="true"
+						ng-model="wishToRegister.charityName"> <input type="text"
+						name="childWish" id="childWish" placeholder="Child Wish"
+						autocomplete="off" tabindex="5" class="txtinput" disabled="true"
+						ng-model="wishToRegister.wish"> <input type="text"
+						name="employeeName" id="employeeName" placeholder="Your name"
+						autocomplete="off" tabindex="6" class="txtinput"
+						ng-model="wishToRegister.employeeName"> <input
+						type="email" name="email" id="email"
+						placeholder="Your e-mail address" autocomplete="off" tabindex="7"
+						class="txtinput" ng-model="wishToRegister.employeeEmail">
+					<input type="text" name="employeeRacfID" id="employeeRacfID"
+						placeholder="Your RacfID" autocomplete="off" tabindex="8"
+						class="txtinput" ng-model="wishToRegister.employeeRacfId">
+					<input type="text" name="employeeBuilding" id="employeeBuilding"
+						placeholder="Your Building" autocomplete="off" tabindex="9"
+						class="txtinput" ng-model="wishToRegister.employeeBuilding">
+					<input type="text" name="employeeDesk" id="employeeDesk"
+						placeholder="Your Desk" autocomplete="off" tabindex="10"
+						class="txtinput" ng-model="wishToRegister.employeeDeskNumber">
+					<input type="text" name="wishStatus" id="wishStatus"
+						placeholder="Wish Status" tabindex="12" class="txtinput"
+						disabled="true" ng-model="wishToRegister.wishStatus">
+				</section>
+			</div>
+
+			<section id="buttons">
+				<input type="reset" name="reset" id="resetbtn" class="resetbtn"
+					value="Reset"> <input type="submit" name="submit"
+					id="submitbtn" class="submitbtn" tabindex="7" value="Submit this!"
+					ng-click="registerWish(wishToRegister)"> <br
+					style="clear: both;">
+			</section>
+		</form>
+	</section>
+
+	<section id="container" ng-show="wishRegistered">
+		<form name="hongkiat" id="hongkiat-form" ng-model="registeredWish">
+			<div id="wrapping" class="clearfix">
+				<section id="aligned">
+					<input type="text" name="wishId" id="wishId" placeholder="Wish Id"
+						tabindex="11" class="txtinput" disabled="true"
+						ng-model="registeredWish.wishId"> <input type="text"
+						name="childName" id="childName" placeholder="Child Name"
+						autocomplete="off" tabindex="1" class="txtinput" disabled="true"
+						ng-model="registeredWish.childName"> <input type="text"
+						name="childAge" id="childAge" placeholder="Child Age"
+						autocomplete="off" tabindex="2" class="txtinput" disabled="true"
+						ng-model="registeredWish.childAge"> <input type="text"
+						name="gender" id="gender" placeholder="Male/Female"
+						autocomplete="off" tabindex="3" class="txtinput" disabled="true"
+						ng-model="registeredWish.childGender"> <input type="text"
+						name="charityName" id="charityName" placeholder="Charity Name"
+						autocomplete="off" tabindex="4" class="txtinput" disabled="true"
+						ng-model="registeredWish.charityName"> <input type="text"
+						name="childWish" id="childWish" placeholder="Child Wish"
+						autocomplete="off" tabindex="5" class="txtinput" disabled="true"
+						ng-model="registeredWish.wish"> <input type="text"
+						name="employeeName" id="employeeName" placeholder="Your name"
+						autocomplete="off" tabindex="6" class="txtinput"
+						ng-model="registeredWish.employeeName" disabled="true"> <input
+						type="email" name="email" id="email"
+						placeholder="Your e-mail address" autocomplete="off" tabindex="7"
+						class="txtinput" ng-model="registeredWish.employeeEmail"
+						disabled="true"> <input type="text" name="employeeRacfID"
+						id="employeeRacfID" placeholder="Your RacfID" autocomplete="off"
+						tabindex="8" class="txtinput"
+						ng-model="registeredWish.employeeRacfId" disabled="true">
+					<input type="text" name="employeeBuilding" id="employeeBuilding"
+						placeholder="Your Building" autocomplete="off" tabindex="9"
+						class="txtinput" ng-model="registeredWish.employeeBuilding"
+						disabled="true"> <input type="text" name="employeeDesk"
+						id="employeeDesk" placeholder="Your Desk" autocomplete="off"
+						tabindex="10" class="txtinput"
+						ng-model="registeredWish.employeeDeskNumber" disabled="true">
+					<input type="text" name="wishStatus" id="wishStatus"
+						placeholder="Wish Status" tabindex="12" class="txtinput"
+						disabled="true" ng-model="registeredWish.wishStatus">
+				</section>
+			</div>
+		</form>
+	</section>
+</div>
+

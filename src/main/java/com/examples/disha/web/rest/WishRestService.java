@@ -50,6 +50,30 @@ public class WishRestService {
 	}
 
 	@GET
+	@Path("getAllRegistered")
+	public List<Wish> getAllRegisteredWishes() {
+		List<Wish> allWishes = new ArrayList<Wish>();
+		allWishes = wishService.getAllWishes();
+		return allWishes;
+	}
+
+	@GET
+	@Path("getAllIncomplete")
+	public List<Wish> getAllIncompleteWishes() {
+		List<Wish> allWishes = new ArrayList<Wish>();
+		allWishes = wishService.getAllWishes();
+		return allWishes;
+	}
+
+	@GET
+	@Path("getAllComplete")
+	public List<Wish> getAllCompleteWishes() {
+		List<Wish> allWishes = new ArrayList<Wish>();
+		allWishes = wishService.getAllWishes();
+		return allWishes;
+	}
+
+	@GET
 	@Path("getByRacfId/{employeeRacfId}")
 	public List<Wish> getAllWishesByRacfId(
 			@PathParam("employeeRacfId") String employeeRacfId) {
@@ -58,7 +82,7 @@ public class WishRestService {
 		return allWishes;
 	}
 
-	@POST
+	@PUT
 	@Path("registerWish/{wishId}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

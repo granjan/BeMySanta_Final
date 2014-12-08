@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.examples.disha.domain.Wish;
 
-
 public class DBSelectOperations {
 
 	private final String WISH_ID = "wishId";
@@ -19,9 +18,13 @@ public class DBSelectOperations {
 	private final String WISH = "wish";
 	private final String WISHSTATUS = "wishStatus";
 	private final String EMPLOYEENAME = "employeeName";
+	private final String EMPLOYEEEMAIL = "employeeEmail";
 	private final String EMPLOYEERACFID = "employeeRacfId";
 	private final String EMPLOYEEBUILDING = "employeeBuilding";
 	private final String EMPLOYEEDESKNUMBER = "employeeDeskNumber";
+	private final String REGISTERED = "REGISTERED";
+	private final String INCOMPLETE = "INCOMPLETE";
+	private final String COMPLETE = "COMPLETE";
 
 	public List<Wish> getAllWishes(String dataBase) {
 
@@ -39,6 +42,7 @@ public class DBSelectOperations {
 						rs.getString(CHILDGENDER), rs.getString(CHARITYNAME),
 						rs.getString(WISH), rs.getString(WISHSTATUS),
 						rs.getString(EMPLOYEENAME),
+						rs.getString(EMPLOYEEEMAIL),
 						rs.getString(EMPLOYEERACFID),
 						rs.getString(EMPLOYEEBUILDING),
 						rs.getString(EMPLOYEEDESKNUMBER));
@@ -75,6 +79,115 @@ public class DBSelectOperations {
 						rs.getString(CHILDGENDER), rs.getString(CHARITYNAME),
 						rs.getString(WISH), rs.getString(WISHSTATUS),
 						rs.getString(EMPLOYEENAME),
+						rs.getString(EMPLOYEEEMAIL),
+						rs.getString(EMPLOYEERACFID),
+						rs.getString(EMPLOYEEBUILDING),
+						rs.getString(EMPLOYEEDESKNUMBER));
+
+				allWishes.add(wish);
+			}
+
+			connection.close();
+		} catch (Exception e) {
+			System.err.println("Cannot connect to database server");
+			e.printStackTrace();
+		}
+
+		return allWishes;
+	}
+
+	public List<Wish> getAllCompleteWishes(String dataBase) {
+
+		List<Wish> allWishes = new ArrayList<Wish>();
+
+		try {
+			Connection connection = new CreateConnection()
+					.getConnection(dataBase);
+
+			String selectSql = "select * from wish where wishStatus = ?";
+
+			PreparedStatement ps = connection.prepareStatement(selectSql);
+			ps.setString(1, COMPLETE);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Wish wish = new Wish(rs.getInt(WISH_ID),
+						rs.getString(CHILDNAME), rs.getString(CHILDAGE),
+						rs.getString(CHILDGENDER), rs.getString(CHARITYNAME),
+						rs.getString(WISH), rs.getString(WISHSTATUS),
+						rs.getString(EMPLOYEENAME),
+						rs.getString(EMPLOYEEEMAIL),
+						rs.getString(EMPLOYEERACFID),
+						rs.getString(EMPLOYEEBUILDING),
+						rs.getString(EMPLOYEEDESKNUMBER));
+
+				allWishes.add(wish);
+			}
+
+			connection.close();
+		} catch (Exception e) {
+			System.err.println("Cannot connect to database server");
+			e.printStackTrace();
+		}
+
+		return allWishes;
+	}
+
+	public List<Wish> getAllInompleteWishes(String dataBase) {
+
+		List<Wish> allWishes = new ArrayList<Wish>();
+
+		try {
+			Connection connection = new CreateConnection()
+					.getConnection(dataBase);
+
+			String selectSql = "select * from wish where wishStatus = ?";
+
+			PreparedStatement ps = connection.prepareStatement(selectSql);
+			ps.setString(1, INCOMPLETE);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Wish wish = new Wish(rs.getInt(WISH_ID),
+						rs.getString(CHILDNAME), rs.getString(CHILDAGE),
+						rs.getString(CHILDGENDER), rs.getString(CHARITYNAME),
+						rs.getString(WISH), rs.getString(WISHSTATUS),
+						rs.getString(EMPLOYEENAME),
+						rs.getString(EMPLOYEEEMAIL),
+						rs.getString(EMPLOYEERACFID),
+						rs.getString(EMPLOYEEBUILDING),
+						rs.getString(EMPLOYEEDESKNUMBER));
+
+				allWishes.add(wish);
+			}
+
+			connection.close();
+		} catch (Exception e) {
+			System.err.println("Cannot connect to database server");
+			e.printStackTrace();
+		}
+
+		return allWishes;
+	}
+
+	public List<Wish> getAllRegisteredWishes(String dataBase) {
+
+		List<Wish> allWishes = new ArrayList<Wish>();
+
+		try {
+			Connection connection = new CreateConnection()
+					.getConnection(dataBase);
+
+			String selectSql = "select * from wish where wishStatus = ?";
+
+			PreparedStatement ps = connection.prepareStatement(selectSql);
+			ps.setString(1, REGISTERED);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Wish wish = new Wish(rs.getInt(WISH_ID),
+						rs.getString(CHILDNAME), rs.getString(CHILDAGE),
+						rs.getString(CHILDGENDER), rs.getString(CHARITYNAME),
+						rs.getString(WISH), rs.getString(WISHSTATUS),
+						rs.getString(EMPLOYEENAME),
+						rs.getString(EMPLOYEEEMAIL),
 						rs.getString(EMPLOYEERACFID),
 						rs.getString(EMPLOYEEBUILDING),
 						rs.getString(EMPLOYEEDESKNUMBER));
@@ -106,11 +219,11 @@ public class DBSelectOperations {
 			ps.setLong(1, wishId);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				wish = new Wish(rs.getInt(WISH_ID),
-						rs.getString(CHILDNAME), rs.getString(CHILDAGE),
-						rs.getString(CHILDGENDER), rs.getString(CHARITYNAME),
-						rs.getString(WISH), rs.getString(WISHSTATUS),
-						rs.getString(EMPLOYEENAME),
+				wish = new Wish(rs.getInt(WISH_ID), rs.getString(CHILDNAME),
+						rs.getString(CHILDAGE), rs.getString(CHILDGENDER),
+						rs.getString(CHARITYNAME), rs.getString(WISH),
+						rs.getString(WISHSTATUS), rs.getString(EMPLOYEENAME),
+						rs.getString(EMPLOYEEEMAIL),
 						rs.getString(EMPLOYEERACFID),
 						rs.getString(EMPLOYEEBUILDING),
 						rs.getString(EMPLOYEEDESKNUMBER));
@@ -126,4 +239,5 @@ public class DBSelectOperations {
 
 		return wish;
 	}
+
 }

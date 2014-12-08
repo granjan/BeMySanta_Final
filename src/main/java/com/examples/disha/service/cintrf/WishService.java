@@ -17,4 +17,10 @@ public interface WishService {
 	int registerForWish(Wish wish);
 
 	int createWish(Wish wish);
+
+	List<Wish> getAllRegisteredWishes();
+
+	List<Wish> getAllIncompleteWishes();
+
+	List<Wish> getAllCompleteWishes();
 }

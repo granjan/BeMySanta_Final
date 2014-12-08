@@ -45,6 +45,30 @@ public class WishRepositoryImpl implements WishRepository {
 		allWishes = this.dbso.getAllWishesByRacfId(employeeRacfId, dataBase);
 		return allWishes;
 	}
+	
+	@Override
+	public List<Wish> getAllInompleteWishes() {
+		List<Wish> allWishes = new ArrayList<Wish>();
+		String dataBase = "testdb";
+		allWishes = this.dbso.getAllInompleteWishes(dataBase);
+		return allWishes;
+	}
+	
+	@Override
+	public List<Wish> getAllRegisteredWishes() {
+		List<Wish> allWishes = new ArrayList<Wish>();
+		String dataBase = "testdb";
+		allWishes = this.dbso.getAllRegisteredWishes(dataBase);
+		return allWishes;
+	}
+	
+	@Override
+	public List<Wish> getAllCompleteWishes() {
+		List<Wish> allWishes = new ArrayList<Wish>();
+		String dataBase = "testdb";
+		allWishes = this.dbso.getAllCompleteWishes(dataBase);
+		return allWishes;
+	}
 
 	@Override
 	public int registerForWish(Wish wish) {

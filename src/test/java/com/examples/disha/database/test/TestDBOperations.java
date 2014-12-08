@@ -17,13 +17,16 @@ public class TestDBOperations {
 	@Test
 	public void testInsertWish() {
 		String dataBase = "testdb";
-		Wish wish = new Wish(20, "test", "test", "test", "test", "test",
-				"test", "test", "test", "test", "test");
-		Wish wish2 = new Wish(21, "test", "test", "test", "test", "test",
-				"test", "test", "gaurav", "test", "test");
+//		Wish wish = new Wish(20, "test", "test", "test", "test", "test",
+//				"INCOMPLETE", "test", "test", "test", "test", "test");
+//		Wish wish2 = new Wish(21, "test", "test", "test", "test", "test",
+//				"INCOMPLETE", "test", "gaurav", "test", "test", dataBase);
+		Wish emptyWish = new Wish(27, "test", "test", "test", "test", "test",
+				"INCOMPLETE", "", "", "", "", "");
 		DBInsertOperations dbio = new DBInsertOperations();
-		dbio.insertWish(wish, dataBase);
-		dbio.insertWish(wish2, dataBase);
+//		dbio.insertWish(wish, dataBase);
+//		dbio.insertWish(wish2, dataBase);
+		dbio.insertWish(emptyWish, dataBase);
 	}
 
 	@Test
@@ -62,7 +65,7 @@ public class TestDBOperations {
 		String dataBase = "testdb";
 		int wishId;
 		Wish wish = new Wish(20, "test", "test", "test", "test", "test",
-				"test", "gaurav", "gaurav", "gaurav", "gaurav");
+				"INCOMPLETE", "gaurav", "gaurav", "gaurav", "gaurav", "gaurav");
 		DBUpdateOperations dbuo = new DBUpdateOperations();
 		wishId = dbuo.registerForWish(wish, dataBase);
 		assertNotNull(wishId);

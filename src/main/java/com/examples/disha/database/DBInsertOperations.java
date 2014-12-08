@@ -13,8 +13,8 @@ public class DBInsertOperations {
 			Connection connection = new CreateConnection()
 					.getConnection(dataBase);
 
-			String insertQuerySQL = "insert into wish (WISHID,CHILDNAME, CHILDAGE, CHARITYNAME, WISH, WISHSTATUS, CHILDGENDER, EMPLOYEENAME, EMPLOYEERACFID, EMPLOYEEBUILDING, EMPLOYEEDESKNUMBER)"
-					+ " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String insertQuerySQL = "insert into wish (WISHID,CHILDNAME, CHILDAGE, CHARITYNAME, WISH, WISHSTATUS, CHILDGENDER, EMPLOYEENAME, EMPLOYEEEMAIL, EMPLOYEERACFID, EMPLOYEEBUILDING, EMPLOYEEDESKNUMBER)"
+					+ " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			// create the mysql insert preparedstatement
 			PreparedStatement preparedStmt = connection
@@ -27,9 +27,10 @@ public class DBInsertOperations {
 			preparedStmt.setString(6, wish.getWish());
 			preparedStmt.setString(7, wish.getWishStatus());
 			preparedStmt.setString(8, wish.getEmployeeName());
-			preparedStmt.setString(9, wish.getEmployeeRacfId());
-			preparedStmt.setString(10, wish.getEmployeeBuilding());
-			preparedStmt.setString(11, wish.getEmployeeDeskNumber());
+			preparedStmt.setString(9, wish.getEmployeeEmail());
+			preparedStmt.setString(10, wish.getEmployeeRacfId());
+			preparedStmt.setString(11, wish.getEmployeeBuilding());
+			preparedStmt.setString(12, wish.getEmployeeDeskNumber());
 
 			// execute the preparedstatement
 			preparedStmt.execute();
