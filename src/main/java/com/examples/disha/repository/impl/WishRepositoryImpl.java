@@ -3,6 +3,7 @@ package com.examples.disha.repository.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.examples.disha.database.DBCompleteWishByVolunteer;
 import com.examples.disha.database.DBInsertOperations;
 import com.examples.disha.database.DBSelectOperations;
 import com.examples.disha.database.DBUpdateOperations;
@@ -16,6 +17,7 @@ public class WishRepositoryImpl implements WishRepository {
 	private DBSelectOperations dbso = new DBSelectOperations();
 	private DBUpdateOperations dbuo = new DBUpdateOperations();
 	private DBInsertOperations dbio = new DBInsertOperations();
+	private DBCompleteWishByVolunteer dbcom = new DBCompleteWishByVolunteer();
 
 	@Override
 	public List<Wish> getWishes() {
@@ -45,7 +47,7 @@ public class WishRepositoryImpl implements WishRepository {
 		allWishes = this.dbso.getAllWishesByRacfId(employeeRacfId, dataBase);
 		return allWishes;
 	}
-	
+
 	@Override
 	public List<Wish> getAllInompleteWishes() {
 		List<Wish> allWishes = new ArrayList<Wish>();
@@ -53,7 +55,7 @@ public class WishRepositoryImpl implements WishRepository {
 		allWishes = this.dbso.getAllInompleteWishes(dataBase);
 		return allWishes;
 	}
-	
+
 	@Override
 	public List<Wish> getAllRegisteredWishes() {
 		List<Wish> allWishes = new ArrayList<Wish>();
@@ -61,7 +63,7 @@ public class WishRepositoryImpl implements WishRepository {
 		allWishes = this.dbso.getAllRegisteredWishes(dataBase);
 		return allWishes;
 	}
-	
+
 	@Override
 	public List<Wish> getAllCompleteWishes() {
 		List<Wish> allWishes = new ArrayList<Wish>();
@@ -76,7 +78,7 @@ public class WishRepositoryImpl implements WishRepository {
 		int updatedWishId = this.dbuo.registerForWish(wish, dataBase);
 		return updatedWishId;
 	}
-	
+
 	@Override
 	public int createWish(Wish wish) {
 		String dataBase = "testdb";
@@ -84,4 +86,19 @@ public class WishRepositoryImpl implements WishRepository {
 		return createdWishId;
 	}
 
+	@Override
+	public Wish completeWish(int wishId, String userName, String password) {
+		String dataBase = "testdb";
+		boolean volunteerCheck = this.dbcom.checkIfVolunteerExists(userName,
+				password, dataBase);
+		if (volunteerCheck) {
+			int completedWishId = this.dbcom.completeWish(wishId, userName,
+					dataBase);
+			Wish completedWish = this.dbso.getWishById(completedWishId,
+					dataBase);
+			return completedWish;
+		} else {
+			return null;
+		}
+	}
 }

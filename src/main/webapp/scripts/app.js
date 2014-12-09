@@ -1,6 +1,7 @@
 'use strict';
 
-var app = angular.module('beMySanta', [ 'beMySanta.services', 'beMySanta.controllers' ]);
+var app = angular.module('beMySanta', [ 'beMySanta.services',
+		'beMySanta.controllers' ]);
 
 app.config(function($routeProvider, $httpProvider) {
 	$routeProvider.when('/wishes', {
@@ -19,6 +20,10 @@ app.config(function($routeProvider, $httpProvider) {
 	$routeProvider.when('/introduction', {
 		templateUrl : 'views/introduction.html',
 		controller : 'IntroductionPageController'
+	});
+	$routeProvider.when('/markWishComplete', {
+		templateUrl : 'views/completeWish.html',
+		controller : 'CompleteWishController'
 	});
 	$routeProvider.otherwise({
 		redirectTo : '/introduction'

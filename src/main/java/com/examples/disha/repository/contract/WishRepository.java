@@ -29,4 +29,6 @@ public interface WishRepository {
 	List<Wish> getAllRegisteredWishes();
 
 	List<Wish> getAllCompleteWishes();
+
+	Wish completeWish(int wishId, String userName, String password);
 }

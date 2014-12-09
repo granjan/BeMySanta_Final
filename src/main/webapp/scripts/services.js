@@ -2,10 +2,9 @@
 
 var services = angular.module('beMySanta.services', [ 'ngResource' ]);
 
-var baseUrl = 'http://localhost\\:8080';
+var baseUrl = 'http://localhost:8080';
 
 services.factory('WishesFactory', [ '$http', function($http) {
-	var baseUrl = 'http://localhost:8080';
 	var wishesFactory = {};
 
 	wishesFactory.query = function() {
@@ -15,7 +14,6 @@ services.factory('WishesFactory', [ '$http', function($http) {
 } ]);
 
 services.factory('WishFactory', [ '$http', function($http) {
-	var baseUrl = 'http://localhost:8080';
 	var wishFactory = {};
 
 	wishFactory.query = function(id) {
@@ -25,7 +23,6 @@ services.factory('WishFactory', [ '$http', function($http) {
 } ]);
 
 services.factory('SearchByWishIdFactory', [ '$http', function($http) {
-	var baseUrl = 'http://localhost:8080';
 	var wishFactory = {};
 
 	wishFactory.query = function(wishId) {
@@ -37,7 +34,6 @@ services.factory('SearchByWishIdFactory', [ '$http', function($http) {
 services.factory('SearchByRacfIdFactory', [
 		'$http',
 		function($http) {
-			var baseUrl = 'http://localhost:8080';
 			var wishFactory = {};
 
 			wishFactory.query = function(employeeRacfId) {
@@ -50,7 +46,6 @@ services.factory('SearchByRacfIdFactory', [
 services.factory('RegisterWishFactory', [
 		'$http',
 		function($http) {
-			var baseUrl = 'http://localhost:8080';
 			var wishFactory = {};
 
 			wishFactory.query = function(wish) {
@@ -61,11 +56,21 @@ services.factory('RegisterWishFactory', [
 			return wishFactory;
 		} ]);
 
-services.factory('FetchWishesFactory', function($resource) {
-	return $resource(baseUrl + '/bemysanta/web/getAll', {}, {
-		query : {
-			method : 'GET',
-			isArray : true
-		},
-	});
-});
+services.factory('CompleteWishFactory', [
+		'$http',
+		function($http) {
+			var wishFactory = {};
+
+			wishFactory.query = function(wishId, username, password) {
+				return $http.put(baseUrl
+						+ '/bemysanta/web/wishes/completeWish/' + wishId, wishId, username, password);
+//						{
+//					"wishId" : wishId
+//				}, {
+//					"userName" : username
+//				}, {
+//					"password" : password
+//				});
+			};
+			return wishFactory;
+		} ]);

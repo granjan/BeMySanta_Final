@@ -13,11 +13,11 @@
 				<th>Child Age</th>
 				<th>Wish</th>
 				<th>Employee Name</th>
+				<th>Employee Email</th>
 				<th>Employee RacfId</th>
 				<th>Building</th>
-				<th>Floor</th>
 				<th>Desk</th>
-				<th>Status</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 
@@ -33,12 +33,16 @@
 				<td>{{wish.employeeEmail}}</td>
 				<td>{{wish.employeeRacfId}}</td>
 				<td>{{wish.employeeBuilding}}</td>
-				<td>{{wish.floor}}</td>
 				<td>{{wish.employeeDeskNumber}}</td>
-				<td>{{wish.wishStatus}}</td>
-				<td><input id="submitWish" value="Register" type="submit"
-					ng-click="registerWishForm(wish)">
-					</button></td>
+				<td ng-show="canRegister(wish.wishStatus)"><input
+					id="submitWish" value="Register" type="submit"
+					ng-click="registerWishForm(wish)"
+					style="width: 66px; height: 20px;"></td>
+				<td ng-show="canComplete(wish.wishStatus)">
+					<button onclick="location.href='#/markWishComplete'"
+						id="completeWish" value="Complete" type="submit"
+						style="width: 66px; height: 20px;"></button>
+				</td>
 			</tr>
 		</tbody>
 
@@ -53,9 +57,13 @@
 
 <div ng-show="wishRegisterRequest">
 
-	<br /> <br /> <span class="notify" style="margin-left: 36%;">
-		<span class="symbol icon-info"></span> {{message}} <a href="#/wishes"><span>Click
-				Here to go back to wish list.</span></a>
+	<br /> <span class="notify"
+		style="margin-left: 36%; display: inline-block;" ng-show="message!=''">
+		<span class="symbol icon-info"></span> {{message}}
+	</span><br /> <span class="notify notify-green"
+		style="margin-left: 36%; display: inline-block;"> <span
+		class="symbol icon-tick"></span> <span ng-click="reload()">Click
+			Here to go back to wish list.</span>
 	</span>
 
 	<section id="container" ng-show="!wishRegistered">

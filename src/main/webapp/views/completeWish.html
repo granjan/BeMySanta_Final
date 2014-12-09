@@ -1,0 +1,93 @@
+<div ng-show="completeWishRequest">
+	<div id="login">
+		<h2>
+			<span class="fontawesome-lock"></span>Log In
+		</h2>
+		<form action="javascript:void(0);" method="POST">
+			<fieldset>
+				<p>
+					<label for="wishId">Wish Id</label>
+				</p>
+				<p>
+					<input type="text" id="wishId" value="wishId"
+						ng-model="completeWishId"
+						onBlur="if(this.value=='')this.value='wishId'"
+						onFocus="if(this.value=='wishId')this.value=''">
+				</p>
+				<p>
+					<label for="username">USERNAME</label>
+				</p>
+				<p>
+					<input type="text" id="username" value="volunteer"
+						ng-model="userName"
+						onBlur="if(this.value=='')this.value='volunteer'"
+						onFocus="if(this.value=='volunteer')this.value=''">
+				</p>
+				<!-- JS because of IE support; better: placeholder="mail@address.com" -->
+				<p>
+					<label for="password">PASSWORD</label>
+				</p>
+				<p>
+					<input type="password" id="password" value="password"
+						ng-model="password"
+						onBlur="if(this.value=='')this.value='password'"
+						onFocus="if(this.value=='password')this.value=''">
+				</p>
+				<!-- JS because of IE support; better: placeholder="password" -->
+				<p>
+					<input type="submit" value="Sign In"
+						ng-click="completeWishById(completeWishId,userName,password)">
+				</p>
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+<div ng-show="!completeWishRequest">
+	<section id="container">
+		<form name="hongkiat" id="hongkiat-form" ng-model="completedWish">
+			<div id="wrapping" class="clearfix">
+				<section id="aligned">
+					<input type="text" name="wishId" id="wishId" placeholder="Wish Id"
+						tabindex="11" class="txtinput" disabled="true"
+						ng-model="completedWish.wishId"> <input type="text"
+						name="childName" id="childName" placeholder="Child Name"
+						autocomplete="off" tabindex="1" class="txtinput" disabled="true"
+						ng-model="completedWish.childName"> <input type="text"
+						name="childAge" id="childAge" placeholder="Child Age"
+						autocomplete="off" tabindex="2" class="txtinput" disabled="true"
+						ng-model="completedWish.childAge"> <input type="text"
+						name="gender" id="gender" placeholder="Male/Female"
+						autocomplete="off" tabindex="3" class="txtinput" disabled="true"
+						ng-model="completedWish.childGender"> <input type="text"
+						name="charityName" id="charityName" placeholder="Charity Name"
+						autocomplete="off" tabindex="4" class="txtinput" disabled="true"
+						ng-model="completedWish.charityName"> <input type="text"
+						name="childWish" id="childWish" placeholder="Child Wish"
+						autocomplete="off" tabindex="5" class="txtinput" disabled="true"
+						ng-model="completedWish.wish"> <input type="text"
+						name="employeeName" id="employeeName" placeholder="Your name"
+						autocomplete="off" tabindex="6" class="txtinput"
+						ng-model="completedWish.employeeName" disabled="true"> <input
+						type="email" name="email" id="email"
+						placeholder="Your e-mail address" autocomplete="off" tabindex="7"
+						class="txtinput" ng-model="completedWish.employeeEmail"
+						disabled="true"> <input type="text" name="employeeRacfID"
+						id="employeeRacfID" placeholder="Your RacfID" autocomplete="off"
+						tabindex="8" class="txtinput"
+						ng-model="completedWish.employeeRacfId" disabled="true"> <input
+						type="text" name="employeeBuilding" id="employeeBuilding"
+						placeholder="Your Building" autocomplete="off" tabindex="9"
+						class="txtinput" ng-model="completedWish.employeeBuilding"
+						disabled="true"> <input type="text" name="employeeDesk"
+						id="employeeDesk" placeholder="Your Desk" autocomplete="off"
+						tabindex="10" class="txtinput"
+						ng-model="completedWish.employeeDeskNumber" disabled="true">
+					<input type="text" name="wishStatus" id="wishStatus"
+						placeholder="Wish Status" tabindex="12" class="txtinput"
+						disabled="true" ng-model="completedWish.wishStatus">
+				</section>
+			</div>
+		</form>
+	</section>
+</div>

@@ -23,4 +23,6 @@ public interface WishService {
 	List<Wish> getAllIncompleteWishes();
 
 	List<Wish> getAllCompleteWishes();
+
+	Wish completeWish(int wishId, String userName, String password);
 }

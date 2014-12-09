@@ -26,7 +26,7 @@ public class DBSelectOperations {
 	private final String INCOMPLETE = "INCOMPLETE";
 	private final String COMPLETE = "COMPLETE";
 
-	public List<Wish> getAllWishes(String dataBase) {
+	public List<Wish> getAllWishesList(String dataBase) {
 
 		List<Wish> allWishes = new ArrayList<Wish>();
 
@@ -35,6 +35,39 @@ public class DBSelectOperations {
 					.getConnection(dataBase);
 			PreparedStatement ps = connection
 					.prepareStatement("select * from wish");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Wish wish = new Wish(rs.getInt(WISH_ID),
+						rs.getString(CHILDNAME), rs.getString(CHILDAGE),
+						rs.getString(CHILDGENDER), rs.getString(CHARITYNAME),
+						rs.getString(WISH), rs.getString(WISHSTATUS),
+						rs.getString(EMPLOYEENAME),
+						rs.getString(EMPLOYEEEMAIL),
+						rs.getString(EMPLOYEERACFID),
+						rs.getString(EMPLOYEEBUILDING),
+						rs.getString(EMPLOYEEDESKNUMBER));
+
+				allWishes.add(wish);
+			}
+
+			connection.close();
+		} catch (Exception e) {
+			System.err.println("Cannot connect to database server");
+			e.printStackTrace();
+		}
+
+		return allWishes;
+	}
+
+	public List<Wish> getAllWishes(String dataBase) {
+
+		List<Wish> allWishes = new ArrayList<Wish>();
+
+		try {
+			Connection connection = new CreateConnection()
+					.getConnection(dataBase);
+			PreparedStatement ps = connection
+					.prepareStatement("select * from wish where wishstatus not like 'COMPLETED'");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Wish wish = new Wish(rs.getInt(WISH_ID),

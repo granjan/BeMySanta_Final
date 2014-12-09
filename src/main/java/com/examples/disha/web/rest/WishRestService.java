@@ -104,4 +104,17 @@ public class WishRestService {
 		return registeredWish;
 	}
 
+	@PUT
+	@Path("completeWish/{wishId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Wish completeWish(int wishId, String userName, String password) {
+//			@PathParam("wishId") int wishId,
+//			@PathParam("userName") String userName,
+//			@PathParam("password") String password) {
+		Wish completedWish = new Wish();
+		completedWish = wishService.completeWish(wishId, userName, password);
+		return completedWish;
+	}
+
 }

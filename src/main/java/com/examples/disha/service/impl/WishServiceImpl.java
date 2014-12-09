@@ -76,4 +76,11 @@ public class WishServiceImpl implements WishService {
 		int createdWishId = wishRepository.createWish(wish);
 		return createdWishId;
 	}
+
+	@Override
+	public Wish completeWish(int wishId, String userName, String password) {
+		Wish createdWishId = wishRepository.completeWish(wishId, userName, password);
+		return createdWishId;
+	}
+
 }
