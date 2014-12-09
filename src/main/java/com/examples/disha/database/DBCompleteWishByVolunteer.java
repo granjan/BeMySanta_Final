@@ -31,7 +31,7 @@ public class DBCompleteWishByVolunteer {
 			statement.setString(3, (new Date()).toString());
 
 			// execute the preparedstatement
-			preparedStmt.execute();
+			statement.execute();
 			connection.close();
 			return wishId;
 		} catch (Exception e) {

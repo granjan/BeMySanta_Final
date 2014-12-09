@@ -18,28 +18,42 @@
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/styles2.css">
 <link rel="stylesheet" href="css/form.css">
+<link rel="stylesheet" href="css/message.css">
 <link rel="stylesheet" href="css/cbdb-search-form.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
 <link rel="stylesheet" type="text/css" media="all"
 	href="css/responsive.css">
-<script src="http://code.jquery.com/jquery-latest.min.js"
+<script src="lib/dependencies/angular.js" type="text/javascript"></script>
+<!-- <script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script> -->
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script> -->
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script> -->
+<script src="lib/dependencies/jquery-1.11.0.min.js"></script>
+<script src="lib/dependencies/jquery-migrate-1.2.1.min.js"></script>
+<!-- <script src="lib/dependencies/angular-route.js"></script> -->
+<!-- <script src="lib/dependencies/angular-route.min.js"></script> -->
+<script src="lib/dependencies/angular-resource.js"></script>
+<script src="lib/dependencies/ng-grid-2.0.11.min.js"
 	type="text/javascript"></script>
+<script src="lib/dependencies/ui-bootstrap-tpls.min.js"
+	type="text/javascript"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/services.js"></script>
+<script src="scripts/controllers.js"></script>
 <script src="scripts/html_handler.js" type="text/javascript"></script>
 <script src="scripts/snowfall.js" type="text/javascript"></script>
-<!-- <script src="js/jquery-2.1.1.js"></script> -->
-<!-- <script src="js/jquery.mobile.custom.min.js"></script> -->
-<!-- <script src="js/main.js"></script> -->
-<!-- Resource jQuery -->
-</head>
-<body class="custom-background">
 
+
+
+</head>
+<body class="custom-background" ng-app="beMySanta">
 	<div id="snowflakes-1" style="background-position: 0px 260px;"></div>
 	<div id="snowflakes-2" style="background-position: 80px 990px;"></div>
 	<div id="christmasTree" style="top: 28rem; bottom: 75px;"></div>
 	<div id="santaClaus" style="top: 28rem; bottom: 75px; left: 70rem;"></div>
 	<div id="leftBells" style="top: 140px;"></div>
 	<div id="rightBells" style="top: 140px; left: 1100px;"></div>
+
 
 	<div id="header">
 		<div id="header-container">
@@ -52,269 +66,35 @@
 		<div id='cssmenu' class="nav">
 			<ul id="menu_ul">
 				<li id="introduction_li" onclick="menu_click(this.id)"><a
-					id="introduction_anchor" href='#'><span>Introduction</span></a></li>
-				<li id="register_li" onclick="menu_click(this.id)"><a href='#'><span>REGISTER
+					id="introduction_anchor" href='#/introduction'><span>Introduction</span></a></li>
+				<li id="register_li" onclick="menu_click(this.id)"><a href='#/wishes'><span>REGISTER
 							FOR A WISH</span></a></li>
-				<li id="wishes_li" class='has-sub' onclick="menu_click(this.id)"><a
+				<li id="wishes_li" class="has-sub" onclick="menu_click(this.id)"><a
 					href='#'><span>Wishes</span></a>
 					<ul>
 						<li class='has-sub'><a href='#'><span>Search
 									Wishes</span></a>
 							<ul>
-								<li><a href='#'><span>By Employee RacfId</span></a></li>
-								<li class='last'><a href='#'><span>By Wish Id</span></a></li>
+								<li><a href='#/searchWishByRacfId'><span>By
+											Employee RacfId</span></a></li>
+								<li class='last'><a href='#/searchWishById'><span>By
+											Wish Id</span></a></li>
 							</ul></li>
-						<li class='has-sub'><a href='#'><span>Complete
+						<li class='has-sub'><a href='#/completeWishList'><span>Complete
 									Wish List</span></a></li>
 					</ul></li>
-				<li id="faq_li" onclick="menu_click(this.id)"><a href='#'><span>FAQ</span></a></li>
+<!-- 				<li id="faq_li" onclick="menu_click(this.id)"><a href='#'><span>FAQ</span></a></li> -->
 				<li id="contact_li" onclick="menu_click(this.id)"><a href='#'><span>Contact
 							Us</span></a></li>
-				<li id="volunteer_li" class='last' onclick="menu_click(this.id)"><a
-					href='#'><span>Volunteer Login</span></a></li>
+<!-- 				<li id="volunteer_li" class='last' onclick="menu_click(this.id)"><a -->
+<!-- 					href='#'><span>Volunteer Login</span></a></li> -->
 			</ul>
 		</div>
 	</div>
 
-	<br />
-	<br />
-
-	<section id="intro">
-		<h1 id="programme_intro">BE MY SANTA</h1>
-		<p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-			Blah Blah Blah Blah</p>
-	</section>
-
-	<!--Mock the data in the table-->
-	<button id="showWishesId" onclick="showWishes()"></button>
-
-	<div id="wishesContainer">
-		<table id="wishTable" class="wishesTable">
-			<thead>
-				<tr>
-					<td colspan=10>DISCLAIMER: ALL DATA PROVIDED 'AS IS' FOR DEMO
-						PURPOSE ONLY</td>
-				</tr>
-				<tr>
-					<th>WishId</th>
-					<th>Child Name</th>
-					<th>Gender</th>
-					<th>Child Age</th>
-					<th>Wish</th>
-					<th>Employee Name</th>
-					<th>Employee RacfId</th>
-					<th>Building</th>
-					<th>Floor</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-
-			<!-- TABLE BODY: MAIN CONTENT-->
-			<tbody>
-			</tbody>
-
-			<!-- TABLE FOOTER-->
-			<tfoot>
-				<tr>
-					<td colspan="10">Copyright &#9400 2014 Disha Works.</td>
-				</tr>
-			</tfoot>
-		</table>
-	</div>
+	<div ng-view></div>
 
 	<br />
 	<br />
-	<br />
-
-	<div id="searchDiv" style="margin-left: 30rem;">
-		<form id="search-form">
-			<input id="searchText" type="text" /> <input id="submitText"
-				type="submit" value="Search" />
-		</form>
-	</div>
-
-	<br />
-	<br />
-	<br />
-
-	<div id="wishesSearchResult">
-		<table id="wishesSearchTable" class="wishesTable">
-			<thead>
-				<tr>
-					<td colspan=10>DISCLAIMER: ALL DATA PROVIDED 'AS IS' FOR DEMO
-						PURPOSE ONLY</td>
-				</tr>
-				<tr>
-					<th>WishId</th>
-					<th>Child Name</th>
-					<th>Gender</th>
-					<th>Child Age</th>
-					<th>Wish</th>
-					<th>Employee Name</th>
-					<th>Employee RacfId</th>
-					<th>Building</th>
-					<th>Floor</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-			<!-- TABLE FOOTER-->
-			<tfoot>
-				<tr>
-					<td colspan="10">Copyright &#9400 2014 Disha Works.</td>
-				</tr>
-			</tfoot>
-		</table>
-	</div>
-
-	<br />
-	<br />
-	<br />
-
-	<div id="searchByIdDiv" style="margin-left: 30rem;">
-		<form id="search-by-id-form">
-			<input id="searchByIdText" type="text" /> <input id="submitByIdText"
-				type="submit" value="Search" />
-		</form>
-	</div>
-
-	<br />
-	<br />
-	<br />
-
-	<div id="wishesResultSearchById">
-		<table id="wishesSearchByIdTable" class="wishesTable">
-			<thead>
-				<tr>
-					<td colspan=10>DISCLAIMER: ALL DATA PROVIDED 'AS IS' FOR DEMO
-						PURPOSE ONLY</td>
-				</tr>
-				<tr>
-					<th>WishId</th>
-					<th>Child Name</th>
-					<th>Gender</th>
-					<th>Child Age</th>
-					<th>Wish</th>
-					<th>Employee Name</th>
-					<th>Employee RacfId</th>
-					<th>Building</th>
-					<th>Floor</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-			<!-- TABLE FOOTER-->
-			<tfoot>
-				<tr>
-					<td colspan="10">Copyright &#9400 2014 Disha Works.</td>
-				</tr>
-			</tfoot>
-		</table>
-	</div>
-
-	<br />
-	<br />
-	<br />
-
-	<div id="login">
-		<h2>
-			<span class="fontawesome-lock"></span>Log In
-		</h2>
-		<form action="javascript:void(0);" method="POST">
-			<fieldset>
-				<p>
-					<label for="username">USERNAME</label>
-				</p>
-				<p>
-					<input type="text" id="username" value="volunteer"
-						onBlur="if(this.value=='')this.value='volunteer'"
-						onFocus="if(this.value=='volunteer')this.value=''">
-				</p>
-				<!-- JS because of IE support; better: placeholder="mail@address.com" -->
-				<p>
-					<label for="password">PASSWORD</label>
-				</p>
-				<p>
-					<input type="password" id="password" value="password"
-						onBlur="if(this.value=='')this.value='password'"
-						onFocus="if(this.value=='password')this.value=''">
-				</p>
-				<!-- JS because of IE support; better: placeholder="password" -->
-				<p>
-					<input type="submit" value="Sign In">
-				</p>
-			</fieldset>
-		</form>
-	</div>
-	<!-- end login -->
-
-	<br />
-	<br />
-	<br />
-
-	<div id="registerWishDiv">
-		<form id="registerWishForm" onsubmit="">
-			<button></button>
-		</form>
-	</div>
-
-	<section id="container">
-		<form name="hongkiat" id="hongkiat-form" method="post" action="#">
-			<div id="wrapping" class="clearfix">
-				<section id="aligned">
-					<input type="text" name="wishId" id="wishId" placeholder="Wish Id"
-						tabindex="11" class="txtinput" disabled="true"> <input
-						type="text" name="childName" id="childName"
-						placeholder="Child Name" autocomplete="off" tabindex="1"
-						class="txtinput" disabled="true"> <input type="text"
-						name="childAge" id="childAge" placeholder="Child Age"
-						autocomplete="off" tabindex="2" class="txtinput" disabled="true">
-					<input type="text" name="gender" id="gender"
-						placeholder="Male/Female" autocomplete="off" tabindex="3"
-						class="txtinput" disabled="true"> <input type="text"
-						name="charityName" id="charityName" placeholder="Charity Name"
-						autocomplete="off" tabindex="4" class="txtinput" disabled="true">
-					<input type="text" name="childWish" id="childWish"
-						placeholder="Child Wish" autocomplete="off" tabindex="5"
-						class="txtinput" disabled="true"> <input type="text"
-						name="employeeName" id="employeeName" placeholder="Your name"
-						autocomplete="off" tabindex="6" class="txtinput"> <input
-						type="email" name="email" id="email"
-						placeholder="Your e-mail address" autocomplete="off" tabindex="7"
-						class="txtinput"> <input type="text" name="employeeRacfID"
-						id="employeeRacfID" placeholder="Your RacfID" autocomplete="off"
-						tabindex="8" class="txtinput"> <input type="text"
-						name="employeeBuilding" id="employeeBuilding"
-						placeholder="Your Building" autocomplete="off" tabindex="9"
-						class="txtinput"> <input type="text" name="employeeDesk"
-						id="employeeDesk" placeholder="Your Desk" autocomplete="off"
-						tabindex="10" class="txtinput"> <input type="text"
-						name="wishStatus" id="wishStatus" placeholder="Wish Status"
-						tabindex="12" class="txtinput" disabled="true">
-				</section>
-			</div>
-
-			<section id="buttons">
-				<input type="reset" name="reset" id="resetbtn" class="resetbtn"
-					value="Reset"> <input type="submit" name="submit"
-					id="submitbtn" class="submitbtn" tabindex="7" value="Submit this!">
-				<br style="clear: both;">
-			</section>
-		</form>
-	</section>
-
 </body>
 </html>

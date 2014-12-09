@@ -31,4 +31,6 @@ public interface WishRepository {
 	List<Wish> getAllCompleteWishes();
 
 	Wish completeWish(int wishId, String userName, String password);
+
+	boolean validateVolunteer(String userName, String password);
 }

@@ -101,4 +101,16 @@ public class WishRepositoryImpl implements WishRepository {
 			return null;
 		}
 	}
+	
+	@Override
+	public boolean validateVolunteer(String userName, String password) {
+		String dataBase = "testdb";
+		boolean volunteerCheck = this.dbcom.checkIfVolunteerExists(userName,
+				password, dataBase);
+		if (volunteerCheck) {
+			return volunteerCheck;
+		} else {
+			return volunteerCheck;
+		}
+	}
 }

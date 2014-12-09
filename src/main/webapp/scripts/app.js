@@ -25,6 +25,10 @@ app.config(function($routeProvider, $httpProvider) {
 		templateUrl : 'views/completeWish.html',
 		controller : 'CompleteWishController'
 	});
+	$routeProvider.when('/completeWishList', {
+		templateUrl : 'views/completeWish.html',
+		controller : 'CompleteWishController'
+	});
 	$routeProvider.otherwise({
 		redirectTo : '/introduction'
 	});

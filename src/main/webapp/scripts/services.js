@@ -62,15 +62,10 @@ services.factory('CompleteWishFactory', [
 			var wishFactory = {};
 
 			wishFactory.query = function(wishId, username, password) {
+				var data = {'wishId' : wishId, 'username' : username, 'password' : password};
 				return $http.put(baseUrl
-						+ '/bemysanta/web/wishes/completeWish/' + wishId, wishId, username, password);
-//						{
-//					"wishId" : wishId
-//				}, {
-//					"userName" : username
-//				}, {
-//					"password" : password
-//				});
+						+ '/bemysanta/web/wishes/completeWish/' + wishId,
+						data);
 			};
 			return wishFactory;
 		} ]);

@@ -99,13 +99,13 @@ public class TestDBOperations {
 	@Test
 	public void testCompleteWishProcess() {
 		String dataBase = "testdb";
-		Wish wish = new Wish(50, "test", "test", "test", "test", "INCOMPLETE",
+		Wish wish = new Wish(5, "test", "test", "test", "test", "INCOMPLETE",
 				"test", "test", "test", "test", "test", "test");
 		DBInsertOperations dbio = new DBInsertOperations();
 		dbio.insertWish(wish, dataBase);
 		DBCompleteWishByVolunteer dbco = new DBCompleteWishByVolunteer();
 		boolean check = dbco.checkIfVolunteerExists("admin", "admin", dataBase);
-		int wishID = dbco.completeWish(50, "admin", dataBase);
+		int wishID = dbco.completeWish(54, "admin", dataBase);
 		assertTrue(wishID != -1);
 	}
 }

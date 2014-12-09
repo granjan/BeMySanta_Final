@@ -2,6 +2,7 @@ package com.examples.disha.service.cintrf;
 
 import java.util.List;
 
+import com.examples.disha.domain.CompleteRequest;
 import com.examples.disha.domain.Wish;
 
 public interface WishService {
@@ -24,5 +25,9 @@ public interface WishService {
 
 	List<Wish> getAllCompleteWishes();
 
-	Wish completeWish(int wishId, String userName, String password);
+//	Wish completeWish(int wishId, String userName, String password);
+
+	boolean validateVolunteer(String userName, String password);
+
+	Wish completeWish(CompleteRequest request);
 }

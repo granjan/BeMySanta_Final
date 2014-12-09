@@ -3,6 +3,7 @@ package com.examples.disha.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.examples.disha.domain.CompleteRequest;
 import com.examples.disha.domain.Wish;
 import com.examples.disha.repository.contract.WishRepository;
 import com.examples.disha.service.cintrf.WishService;
@@ -78,9 +79,17 @@ public class WishServiceImpl implements WishService {
 	}
 
 	@Override
-	public Wish completeWish(int wishId, String userName, String password) {
-		Wish createdWishId = wishRepository.completeWish(wishId, userName, password);
+	public Wish completeWish(CompleteRequest request) {
+		Wish createdWishId = wishRepository.completeWish(request.getWishId(),
+				request.getUsername(), request.getPassword());
 		return createdWishId;
+	}
+
+	@Override
+	public boolean validateVolunteer(String userName, String password) {
+		boolean volunteerValidated = wishRepository.validateVolunteer(userName,
+				password);
+		return volunteerValidated;
 	}
 
 }
