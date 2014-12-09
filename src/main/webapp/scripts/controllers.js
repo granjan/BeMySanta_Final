@@ -204,7 +204,11 @@ controllers
 
 							$scope.completeWishById = function(completeWishId,
 									username, password) {
-								CompleteWishFactory.query(completeWishId, username, password).success(function(result) {
+								CompleteWishFactory
+										.query(completeWishId, username,
+												password)
+										.success(
+												function(result) {
 													$scope.completedWish = result;
 													$scope.completeWishRequest = false;
 													$scope.message = $scope.completedWish.wishId
@@ -217,6 +221,37 @@ controllers
 												});
 							};
 						} ]);
+
+controllers.controller('CompletedWishController', [
+		'$rootScope',
+		'$scope',
+		'WishesFactory',
+		'WishFactory',
+		'SearchByWishIdFactory',
+		'SearchByRacfIdFactory',
+		'RegisterWishFactory',
+		'CompleteWishFactory',
+		'CompletedWishFactory',
+		'$location',
+		function($rootScope, $scope, WishesFactory, WishFactory,
+				SearchByWishIdFactory, SearchByRacfIdFactory,
+				RegisterWishFactory, CompleteWishFactory, CompletedWishFactory,
+				$location) {
+
+			$scope.wishes = {};
+
+			$scope.completedWishes = function() {
+				CompletedWishFactory.query().success(function(result) {
+					$scope.wishes = result;
+				}).error(
+						function(error) {
+							$scope.status = 'Unable to load customer data: '
+									+ error.message;
+						});
+			};
+
+			$scope.completedWishes();
+		} ]);
 
 controllers.controller('SearchWishByIdController', [
 		'$rootScope',

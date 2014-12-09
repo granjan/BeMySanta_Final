@@ -1,0 +1,45 @@
+<div id="wishesContainer" ng-model="wishes">
+	<table id="wishTable" class="wishesTable">
+		<thead>
+			<tr>
+				<td colspan=10>DISCLAIMER: ALL DATA PROVIDED 'AS IS' FOR DEMO
+					PURPOSE ONLY</td>
+			</tr>
+			<tr>
+				<th>WishId</th>
+				<th>Child Name</th>
+				<th>Gender</th>
+				<th>Child Age</th>
+				<th>Wish</th>
+				<th>Employee Name</th>
+				<th>Employee Email</th>
+				<th>Employee RacfId</th>
+				<th>Building</th>
+				<th>Desk</th>
+			</tr>
+		</thead>
+
+		<!-- TABLE BODY: MAIN CONTENT-->
+		<tbody>
+			<tr ng-repeat="wish in wishes">
+				<td>{{wish.wishId}}</td>
+				<td>{{wish.childName}}</td>
+				<td>{{wish.childGender}}</td>
+				<td>{{wish.childAge}}</td>
+				<td>{{wish.wish}}</td>
+				<td>{{wish.employeeName}}</td>
+				<td>{{wish.employeeEmail}}</td>
+				<td>{{wish.employeeRacfId}}</td>
+				<td>{{wish.employeeBuilding}}</td>
+				<td>{{wish.employeeDeskNumber}}</td>
+			</tr>
+		</tbody>
+
+		<!-- TABLE FOOTER-->
+		<tfoot>
+			<tr>
+				<td colspan="10">Copyright &#9400 2014 Disha Works.</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>

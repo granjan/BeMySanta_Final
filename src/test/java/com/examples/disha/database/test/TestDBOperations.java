@@ -108,4 +108,13 @@ public class TestDBOperations {
 		int wishID = dbco.completeWish(54, "admin", dataBase);
 		assertTrue(wishID != -1);
 	}
+	
+	@Test
+	public void testGetCompleteWishes() {
+		String dataBase = "testdb";
+		List<Wish> allWishes = new ArrayList<Wish>();
+		DBSelectOperations dbso = new DBSelectOperations();
+		allWishes = dbso.getAllCompleteWishes(dataBase);
+		assertNotNull(allWishes);
+	}
 }

@@ -70,7 +70,7 @@ public class WishRestService {
 	@Path("getAllComplete")
 	public List<Wish> getAllCompleteWishes() {
 		List<Wish> allWishes = new ArrayList<Wish>();
-		allWishes = wishService.getAllWishes();
+		allWishes = wishService.getAllCompleteWishes();
 		return allWishes;
 	}
 

@@ -24,7 +24,7 @@ public class DBSelectOperations {
 	private final String EMPLOYEEDESKNUMBER = "employeeDeskNumber";
 	private final String REGISTERED = "REGISTERED";
 	private final String INCOMPLETE = "INCOMPLETE";
-	private final String COMPLETE = "COMPLETE";
+	private final String COMPLETE = "COMPLETED";
 
 	public List<Wish> getAllWishesList(String dataBase) {
 

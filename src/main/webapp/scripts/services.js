@@ -13,6 +13,15 @@ services.factory('WishesFactory', [ '$http', function($http) {
 	return wishesFactory;
 } ]);
 
+services.factory('CompletedWishFactory', [ '$http', function($http) {
+	var wishesFactory = {};
+
+	wishesFactory.query = function() {
+		return $http.get(baseUrl + '/bemysanta/web/wishes/getAllComplete');
+	};
+	return wishesFactory;
+} ]);
+
 services.factory('WishFactory', [ '$http', function($http) {
 	var wishFactory = {};
 
