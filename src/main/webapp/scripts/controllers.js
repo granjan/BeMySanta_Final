@@ -201,6 +201,7 @@ controllers
 							$scope.password = "";
 							$scope.completedWish = {};
 							$scope.completeWishRequest = true;
+							$scope.message = "Only for Be My Santa Volunteers";
 
 							$scope.completeWishById = function(completeWishId,
 									username, password) {
@@ -222,36 +223,44 @@ controllers
 							};
 						} ]);
 
-controllers.controller('CompletedWishController', [
-		'$rootScope',
-		'$scope',
-		'WishesFactory',
-		'WishFactory',
-		'SearchByWishIdFactory',
-		'SearchByRacfIdFactory',
-		'RegisterWishFactory',
-		'CompleteWishFactory',
-		'CompletedWishFactory',
-		'$location',
-		function($rootScope, $scope, WishesFactory, WishFactory,
-				SearchByWishIdFactory, SearchByRacfIdFactory,
-				RegisterWishFactory, CompleteWishFactory, CompletedWishFactory,
-				$location) {
+controllers
+		.controller(
+				'CompletedWishController',
+				[
+						'$rootScope',
+						'$scope',
+						'WishesFactory',
+						'WishFactory',
+						'SearchByWishIdFactory',
+						'SearchByRacfIdFactory',
+						'RegisterWishFactory',
+						'CompleteWishFactory',
+						'CompletedWishFactory',
+						'$location',
+						function($rootScope, $scope, WishesFactory,
+								WishFactory, SearchByWishIdFactory,
+								SearchByRacfIdFactory, RegisterWishFactory,
+								CompleteWishFactory, CompletedWishFactory,
+								$location) {
 
-			$scope.wishes = {};
+							$scope.wishes = {};
+							$scope.message = "This page displays all the completed wishes so far.";
 
-			$scope.completedWishes = function() {
-				CompletedWishFactory.query().success(function(result) {
-					$scope.wishes = result;
-				}).error(
-						function(error) {
-							$scope.status = 'Unable to load customer data: '
-									+ error.message;
-						});
-			};
+							$scope.completedWishes = function() {
+								CompletedWishFactory
+										.query()
+										.success(function(result) {
+											$scope.wishes = result;
+										})
+										.error(
+												function(error) {
+													$scope.status = 'Unable to load customer data: '
+															+ error.message;
+												});
+							};
 
-			$scope.completedWishes();
-		} ]);
+							$scope.completedWishes();
+						} ]);
 
 controllers.controller('SearchWishByIdController', [
 		'$rootScope',
