@@ -364,4 +364,5 @@ controllers
 															+ error.message;
 												});
 							};
+							$scope.viewAllContacts();
 						} ]);

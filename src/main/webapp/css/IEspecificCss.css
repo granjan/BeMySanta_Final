@@ -9,3 +9,53 @@ input#submitText,#submitByIdText[type="submit"] {
 div#snowflakes-1,#snowflakes-2 {
 	height: 100%;
 }
+
+div#christmasTree {
+	background-image: none;
+	height: 200px;
+	width: 200px;
+	left: 0px;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/christmas_tree.gif',
+		sizingMethod='scale');
+
+	/*-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/christmas_tree.gif', sizingMethod='scale')";*/
+}
+
+div#santaClaus {
+	background-image: none;
+	height: 200px;
+	width: 200px;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/santa.gif',
+		sizingMethod='scale');
+	/*left: 80%;*/
+	right: 10px;
+
+	/*-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/santa.gif', sizingMethod='scale')";*/
+}
+
+div#wishesContainer {
+	display: inline-block;
+}
+
+div#cssmenu {
+	width: 100%;
+}
+
+.nav-container .nav {
+	width: 100%;
+}
+
+#cssmenu {
+	filter: progid:DXImageTransform.Microsoft.Gradient(
+            StartColorStr='#333333', EndColorStr='#141414', GradientType=0);
+}
+
+#cssmenu a {
+	filter: progid:DXImageTransform.Microsoft.Gradient(
+            StartColorStr='#333333', EndColorStr='#141414', GradientType=0);
+}
+
+#cssmenu>ul>li.active>a,#cssmenu>ul>li:hover>a {
+	filter: progid:DXImageTransform.Microsoft.Gradient(
+            StartColorStr='#262626', EndColorStr='#070707', GradientType=0);
+}

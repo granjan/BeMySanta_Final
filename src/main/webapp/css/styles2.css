@@ -1,5 +1,5 @@
 /*** central column on page ***/
-div#wishesContainer,#wishesSearchResult, #wishesResultSearchById
+div#wishesContainer,#wishesSearchResult, #wishesResultSearchById, #contactsContainer
 {
 max-width: 800px;
 margin: 0 auto;
