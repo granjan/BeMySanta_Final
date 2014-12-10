@@ -13,13 +13,11 @@
 /*@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);*/
 
 /* ---------- FONTAWESOME ---------- */
-
 [class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
+	font-family: 'FontAwesome', sans-serif;
 }
 
 /* ---------- GENERAL ---------- */
-
 body {
 	background-color: #C0C0C0;
 	color: #000;
@@ -38,7 +36,6 @@ body {
 }
 
 /* ---------- LOGIN ---------- */
-
 #login {
 	margin: 50px auto;
 	width: 400px;
@@ -81,7 +78,8 @@ body {
 	border-radius: 3px;
 }
 
-#login fieldset input[type="text"], #login fieldset input[type="password"] {
+#login fieldset input[type="text"],#login fieldset input[type="password"]
+	{
 	background-color: #eee;
 	color: #777;
 	padding: 4px 10px;

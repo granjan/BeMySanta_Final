@@ -1,0 +1,41 @@
+<div>
+
+	<br /> <span class="notify"
+		style="margin-left: 36%; display: inline-block;" ng-show="message!=''">
+		<span class="symbol icon-info"></span> {{message}}
+	</span>
+	<div id="contactsContainer" ng-model="contacts">
+		<table id="contactsTable" class="wishesTable">
+			<thead>
+				<tr>
+					<td colspan=4>DISCLAIMER: ALL DATA PROVIDED 'AS IS' FOR DEMO
+						PURPOSE ONLY</td>
+				</tr>
+				<tr>
+					<th>ContactId</th>
+					<th>Volunteer Name</th>
+					<th>Contact Number</th>
+					<th>Floor</th>
+				</tr>
+			</thead>
+
+			<!-- TABLE BODY: MAIN CONTENT-->
+			<tbody>
+				<tr ng-repeat="contact in contacts">
+					<td>{{contact.volunteerId}}</td>
+					<td>{{contact.volunteerName}}</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+
+			<!-- TABLE FOOTER-->
+			<tfoot>
+				<tr>
+					<td colspan="4">Copyright &#9400 2014 Disha Works.</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+</div>

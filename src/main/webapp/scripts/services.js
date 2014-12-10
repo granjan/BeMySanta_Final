@@ -65,16 +65,30 @@ services.factory('RegisterWishFactory', [
 			return wishFactory;
 		} ]);
 
-services.factory('CompleteWishFactory', [
-		'$http',
-		function($http) {
-			var wishFactory = {};
+services.factory('CompleteWishFactory',
+		[
+				'$http',
+				function($http) {
+					var wishFactory = {};
 
-			wishFactory.query = function(wishId, username, password) {
-				var data = {'wishId' : wishId, 'username' : username, 'password' : password};
-				return $http.put(baseUrl
-						+ '/bemysanta/web/wishes/completeWish/' + wishId,
-						data);
-			};
-			return wishFactory;
-		} ]);
+					wishFactory.query = function(wishId, username, password) {
+						var data = {
+							'wishId' : wishId,
+							'username' : username,
+							'password' : password
+						};
+						return $http.put(baseUrl
+								+ '/bemysanta/web/wishes/completeWish/'
+								+ wishId, data);
+					};
+					return wishFactory;
+				} ]);
+
+services.factory('ContactsFactory', [ '$http', function($http) {
+	var wishFactory = {};
+
+	wishFactory.query = function() {
+		return $http.get(baseUrl + '/bemysanta/web/wishes/getAllContacts/');
+	};
+	return wishFactory;
+} ]);

@@ -29,6 +29,11 @@ app.config(function($routeProvider, $httpProvider) {
 		templateUrl : 'views/completedWishes.html',
 		controller : 'CompletedWishController'
 	});
+
+	$routeProvider.when('/contacts', {
+		templateUrl : 'views/contactPage.html',
+		controller : 'ContactsController'
+	});
 	$routeProvider.otherwise({
 		redirectTo : '/introduction'
 	});

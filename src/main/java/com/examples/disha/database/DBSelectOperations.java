@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
 
 public class DBSelectOperations {
@@ -271,6 +272,27 @@ public class DBSelectOperations {
 		}
 
 		return wish;
+	}
+
+	public List<Volunteer> getAllVolunteers(String database) {
+		List<Volunteer> allVolunteers = new ArrayList<Volunteer>();
+		try {
+			Connection connection = new CreateConnection()
+					.getConnection(database);
+			PreparedStatement ps = connection
+					.prepareStatement("select * from volunteers");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Volunteer volunteer = new Volunteer(rs.getInt("volunteerid"),
+						rs.getString("volunteernaame"), "");
+				allVolunteers.add(volunteer);
+			}
+			connection.close();
+		} catch (Exception e) {
+			System.err.println("Cannot connect to database server");
+			e.printStackTrace();
+		}
+		return allVolunteers;
 	}
 
 }

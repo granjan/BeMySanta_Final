@@ -7,6 +7,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import com.examples.disha.domain.CompleteRequest;
+import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
 import com.examples.disha.service.cintrf.WishService;
 import com.google.inject.Inject;
@@ -110,22 +111,19 @@ public class WishRestService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Wish completeWish(CompleteRequest request) {
-//			@PathParam("wishId") int wishId,
-//			@PathParam("userName") String userName,
-//			@PathParam("password") String password) {
 		Wish completedWish = new Wish();
 		completedWish = wishService.completeWish(request);
 		return completedWish;
 	}
-	
-//	@GET
-//	@Path("validateVolunteer/{wishId}")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public boolean validateVolunteer(String userName, String password) {
-//		Wish completedWish = new Wish();
-//		completedWish = wishService.completeWish(wishId, userName, password);
-//		return completedWish;
-//	}
+
+	@GET
+	@Path("getAllContacts")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Volunteer> getVolunteers() {
+		List<Volunteer> allVolunteers = new ArrayList<Volunteer>();
+		allVolunteers = wishService.getAllVolunteers();
+		return allVolunteers;
+	}
 
 }

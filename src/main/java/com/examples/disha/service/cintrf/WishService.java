@@ -3,6 +3,7 @@ package com.examples.disha.service.cintrf;
 import java.util.List;
 
 import com.examples.disha.domain.CompleteRequest;
+import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
 
 public interface WishService {
@@ -30,4 +31,6 @@ public interface WishService {
 	boolean validateVolunteer(String userName, String password);
 
 	Wish completeWish(CompleteRequest request);
+
+	List<Volunteer> getAllVolunteers();
 }

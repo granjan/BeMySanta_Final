@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.examples.disha.domain.CompleteRequest;
+import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
 import com.examples.disha.repository.contract.WishRepository;
 import com.examples.disha.service.cintrf.WishService;
@@ -90,6 +91,13 @@ public class WishServiceImpl implements WishService {
 		boolean volunteerValidated = wishRepository.validateVolunteer(userName,
 				password);
 		return volunteerValidated;
+	}
+
+	@Override
+	public List<Volunteer> getAllVolunteers() {
+		List<Volunteer> allVolunteers = new ArrayList<Volunteer>();
+		allVolunteers = wishRepository.getAllVolunteers();
+		return allVolunteers;
 	}
 
 }

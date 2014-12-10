@@ -2,6 +2,7 @@ package com.examples.disha.repository.contract;
 
 import java.util.List;
 
+import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
 
 public interface WishRepository {
@@ -33,4 +34,6 @@ public interface WishRepository {
 	Wish completeWish(int wishId, String userName, String password);
 
 	boolean validateVolunteer(String userName, String password);
+
+	List<Volunteer> getAllVolunteers();
 }

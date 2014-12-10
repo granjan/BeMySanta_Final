@@ -5573,7 +5573,8 @@ function $LogProvider(){
       var console = $window.console || {},
           logFn = console[type] || console.log || noop;
 
-      if (logFn.apply) {
+//      if (logFn.apply) { changes made for IE
+    	  if (typeof logFn.apply === 'function' && logFn.apply) {
         return function() {
           var args = [];
           forEach(arguments, function(arg) {

@@ -328,3 +328,40 @@ controllers.controller('IntroductionPageController', [
 			$scope.message = "Blah Blah";
 
 		} ]);
+
+controllers
+		.controller(
+				'ContactsController',
+				[
+						'$rootScope',
+						'$scope',
+						'WishesFactory',
+						'WishFactory',
+						'SearchByWishIdFactory',
+						'SearchByRacfIdFactory',
+						'RegisterWishFactory',
+						'CompleteWishFactory',
+						'ContactsFactory',
+						'$location',
+						function($rootScope, $scope, WishesFactory,
+								WishFactory, SearchByWishIdFactory,
+								SearchByRacfIdFactory, RegisterWishFactory,
+								CompleteWishFactory, ContactsFactory, $location) {
+
+							$scope.contacts = {};
+
+							$scope.viewAllContacts = function() {
+								ContactsFactory
+										.query()
+										.success(
+												function(result) {
+													$scope.contacts = result;
+													$scope.message = "Please Contact the volunteers listed below for any further queries.";
+												})
+										.error(
+												function(error) {
+													$scope.status = 'Unable to load contacts data: '
+															+ error.message;
+												});
+							};
+						} ]);

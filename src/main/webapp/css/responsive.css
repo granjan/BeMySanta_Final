@@ -1,6 +1,6 @@
 /** all devices and responsive browser windows **/
 @media screen and (max-width: 520px) {
-/*	body {
+	/*	body {
 		padding: 10px 15px;
 	}*/
 	#container {
@@ -16,7 +16,7 @@
 		display: block;
 		float: none;
 	}
-	#hongkiat-form .txtinput, #hongkiat-form textarea {
+	#hongkiat-form .txtinput,#hongkiat-form textarea {
 		width: 85%;
 	}
 	#prioritycase {
@@ -30,10 +30,9 @@
 	}
 }
 
-
 /* smaller screen dropoff *******/
 @media only screen and (max-width: 520px) {
- 	#hongkiat-form .txtinput, #hongkiat-form textarea {
+	#hongkiat-form .txtinput,#hongkiat-form textarea {
 		width: 80%;
 	}
 }

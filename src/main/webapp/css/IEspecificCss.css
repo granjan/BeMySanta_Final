@@ -1,0 +1,11 @@
+#search-form,#search-by-id-form {
+	width: 80%;
+}
+
+input#submitText,#submitByIdText[type="submit"] {
+	width: 13%;
+}
+
+div#snowflakes-1,#snowflakes-2 {
+	height: 100%;
+}

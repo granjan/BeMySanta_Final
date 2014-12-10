@@ -7,6 +7,7 @@ import com.examples.disha.database.DBCompleteWishByVolunteer;
 import com.examples.disha.database.DBInsertOperations;
 import com.examples.disha.database.DBSelectOperations;
 import com.examples.disha.database.DBUpdateOperations;
+import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
 import com.examples.disha.repository.contract.WishRepository;
 import com.google.inject.Singleton;
@@ -112,5 +113,13 @@ public class WishRepositoryImpl implements WishRepository {
 		} else {
 			return volunteerCheck;
 		}
+	}
+
+	@Override
+	public List<Volunteer> getAllVolunteers() {
+		String dataBase = "testdb";
+		List<Volunteer> allVolunteers = new ArrayList<Volunteer>();
+		allVolunteers = this.dbso.getAllVolunteers(dataBase);
+		return allVolunteers;
 	}
 }
