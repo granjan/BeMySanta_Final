@@ -19,24 +19,23 @@ public class WishRepositoryImpl implements WishRepository {
 	private DBUpdateOperations dbuo = new DBUpdateOperations();
 	private DBInsertOperations dbio = new DBInsertOperations();
 	private DBCompleteWishByVolunteer dbcom = new DBCompleteWishByVolunteer();
+	
+	private String dataBase = "testdb";//change this to final db when portal goes live;
 
 	@Override
 	public List<Wish> getWishes() {
-		String dataBase = "testdb";
 		this.dbso.getAllWishes(dataBase);
 		return null;
 	}
 
 	@Override
 	public Wish getWishById(int wishId) {
-		String dataBase = "testdb";
 		return this.dbso.getWishById(wishId, dataBase);
 	}
 
 	@Override
 	public List<Wish> getAllWishes() {
 		List<Wish> allWishes = new ArrayList<Wish>();
-		String dataBase = "testdb";
 		allWishes = this.dbso.getAllWishes(dataBase);
 		return allWishes;
 	}
@@ -44,7 +43,6 @@ public class WishRepositoryImpl implements WishRepository {
 	@Override
 	public List<Wish> getAllWishesByRacfId(String employeeRacfId) {
 		List<Wish> allWishes = new ArrayList<Wish>();
-		String dataBase = "testdb";
 		allWishes = this.dbso.getAllWishesByRacfId(employeeRacfId, dataBase);
 		return allWishes;
 	}
@@ -52,7 +50,6 @@ public class WishRepositoryImpl implements WishRepository {
 	@Override
 	public List<Wish> getAllInompleteWishes() {
 		List<Wish> allWishes = new ArrayList<Wish>();
-		String dataBase = "testdb";
 		allWishes = this.dbso.getAllInompleteWishes(dataBase);
 		return allWishes;
 	}
@@ -60,7 +57,6 @@ public class WishRepositoryImpl implements WishRepository {
 	@Override
 	public List<Wish> getAllRegisteredWishes() {
 		List<Wish> allWishes = new ArrayList<Wish>();
-		String dataBase = "testdb";
 		allWishes = this.dbso.getAllRegisteredWishes(dataBase);
 		return allWishes;
 	}
@@ -68,28 +64,24 @@ public class WishRepositoryImpl implements WishRepository {
 	@Override
 	public List<Wish> getAllCompleteWishes() {
 		List<Wish> allWishes = new ArrayList<Wish>();
-		String dataBase = "testdb";
 		allWishes = this.dbso.getAllCompleteWishes(dataBase);
 		return allWishes;
 	}
 
 	@Override
 	public int registerForWish(Wish wish) {
-		String dataBase = "testdb";
 		int updatedWishId = this.dbuo.registerForWish(wish, dataBase);
 		return updatedWishId;
 	}
 
 	@Override
 	public int createWish(Wish wish) {
-		String dataBase = "testdb";
 		int createdWishId = this.dbio.insertWish(wish, dataBase);
 		return createdWishId;
 	}
 
 	@Override
 	public Wish completeWish(int wishId, String userName, String password) {
-		String dataBase = "testdb";
 		boolean volunteerCheck = this.dbcom.checkIfVolunteerExists(userName,
 				password, dataBase);
 		if (volunteerCheck) {
@@ -105,7 +97,6 @@ public class WishRepositoryImpl implements WishRepository {
 	
 	@Override
 	public boolean validateVolunteer(String userName, String password) {
-		String dataBase = "testdb";
 		boolean volunteerCheck = this.dbcom.checkIfVolunteerExists(userName,
 				password, dataBase);
 		if (volunteerCheck) {
@@ -117,7 +108,6 @@ public class WishRepositoryImpl implements WishRepository {
 
 	@Override
 	public List<Volunteer> getAllVolunteers() {
-		String dataBase = "testdb";
 		List<Volunteer> allVolunteers = new ArrayList<Volunteer>();
 		allVolunteers = this.dbso.getAllVolunteers(dataBase);
 		return allVolunteers;

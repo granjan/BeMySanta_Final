@@ -80,3 +80,56 @@ input#searchText {
 	border-right-width: 1px;
 	height: 1.5em;
 }
+
+#hongkiat-form div#wrapping {
+	width: 30%;
+	margin-left: 30%;
+}
+
+#hongkiat-form input#employeeName {
+	background: #fff url('images/user_ie.png') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#email {
+	background: #fff url('images/email_ie.png') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#employeeRacfID {
+	background: #fff url('images/rbs_ie.png') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#employeeBuilding {
+	background: #fff url('images/office_ie.png') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#employeeDesk {
+	background: #fff url('images/desk_ie.png') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#childName {
+	background: #fff url('images/Babyicon_ie.png') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#childAge {
+	background: #fff url('images/Baby_ie.png') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#gender {
+	background: #fff url('images/child_icon_ie.png') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#charityName {
+	background: #fff url('images/childFace_ie.png') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#childWish {
+	background: #fff url('images/secretsanta_ie.jpg') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#wishStatus {
+	background: #fff url('images/santa_ie.jpg') 5px 4px no-repeat;
+}
+
+#hongkiat-form input#wishId {
+	background: #fff url('images/icon256_ie.png') 5px 4px no-repeat;
+}

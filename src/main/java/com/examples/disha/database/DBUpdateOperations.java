@@ -33,9 +33,4 @@ public class DBUpdateOperations {
 		return -1;
 	}
 
-	public void updateWishStatus(Wish wish, String dataBase, String userName,
-			String password) {
-
-	}
-
 }

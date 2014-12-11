@@ -1,4 +1,6 @@
 <div>
+
+	<br /> <br />
 	<div id="searchDiv" style="margin-left: 30rem;">
 		<form id="search-form">
 			<input id="searchText" type="text" ng-model="inputWishId" /> <input
@@ -6,8 +8,10 @@
 				ng-click="getWish(inputWishId)">
 		</form>
 	</div>
-
-	<br /> <br />
+	<br /> <span class="notify"
+		style="margin-left: 36%; display: inline-block;" ng-show="message!=''">
+		<span class="symbol icon-info"></span> {{message}}
+	</span><br /> <br /> <br />
 
 	<div id="wishesContainer">
 		<table id="wishTable" class="wishesTable">
@@ -44,7 +48,12 @@
 					<td>{{wishes.employeeRacfId}}</td>
 					<td>{{wishes.employeeBuilding}}</td>
 					<td>{{wishes.employeeDeskNumber}}</td>
-					<td>{{wishes.wishStatus}}</td>
+					<td ng-show="!canComplete(wishes)">{{wishes.wishStatus}}</td>
+					<td ng-show="canComplete(wishes)">
+						<button onclick="location.href='#/markWishComplete'"
+							id="completeWish" value="Complete" type="submit"
+							style="width: 66px; height: 20px;">Complete</button>
+					</td>
 				</tr>
 			</tbody>
 

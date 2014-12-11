@@ -68,7 +68,7 @@ public class DBSelectOperations {
 			Connection connection = new CreateConnection()
 					.getConnection(dataBase);
 			PreparedStatement ps = connection
-					.prepareStatement("select * from wish where wishstatus not like 'COMPLETED'");
+					.prepareStatement("select * from wish where wishstatus not like 'COMPLETED' and wishstatus not like 'REGISTERED'");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Wish wish = new Wish(rs.getInt(WISH_ID),

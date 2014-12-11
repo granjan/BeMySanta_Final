@@ -27,6 +27,55 @@ controllers
 							$scope.registeredWish = {};
 							$scope.message = "";
 
+							/* Changes for pagination of the results */
+							// $scope.itemsPerPage = 5;
+							// $scope.currentPage = 0;
+							//
+							// $scope.range = function() {
+							// var rangeSize = 5;
+							// var ret = [];
+							// var start;
+							//
+							// start = $scope.currentPage;
+							// if (start > $scope.pageCount() - rangeSize) {
+							// start = $scope.pageCount() - rangeSize + 1;
+							// }
+							//
+							// for (var i = start; i < start + rangeSize; i++) {
+							// ret.push(i);
+							// }
+							// return ret;
+							// };
+							//
+							// $scope.prevPage = function() {
+							// if ($scope.currentPage > 0) {
+							// $scope.currentPage--;
+							// }
+							// };
+							// $scope.prevPageDisabled = function() {
+							// return $scope.currentPage === 0 ? "disabled"
+							// : "";
+							// };
+							//
+							// $scope.pageCount = function() {
+							// return Math.ceil($scope.wishes.length
+							// / $scope.itemsPerPage) - 1;
+							// };
+							// $scope.nextPage = function() {
+							// if ($scope.currentPage < $scope.pageCount()) {
+							// $scope.currentPage++;
+							// }
+							// };
+							// $scope.nextPageDisabled = function() {
+							// return $scope.currentPage === $scope
+							// .pageCount() ? "disabled" : "";
+							// };
+							//
+							// $scope.setPage = function(n) {
+							// $scope.currentPage = n;
+							// };
+							//
+							/* End of changes for pagination */
 							function getWishes() {
 								WishesFactory
 										.query()
@@ -35,7 +84,7 @@ controllers
 										})
 										.error(
 												function(error) {
-													$scope.status = 'Unable to load customer data: '
+													$scope.status = 'Unable to load wishes data: '
 															+ error.message;
 												});
 							}
@@ -61,7 +110,7 @@ controllers
 													})
 											.error(
 													function(error) {
-														$scope.status = 'Unable to load customer data: '
+														$scope.status = 'Unable to load wishes data: '
 																+ error.message;
 													});
 								} else {
@@ -97,7 +146,7 @@ controllers
 							};
 
 							$scope.canComplete = function(wishStatus) {
-								if (wishStatus.toUpperCase() == "Registered"
+								if (wishStatus.toUpperCase() == ("Registered")
 										.toUpperCase()) {
 									return true;
 								} else {
@@ -145,7 +194,7 @@ controllers.controller('RegisterWishController', [
 					$scope.wishRegistered = true;
 				}).error(
 						function(error) {
-							$scope.status = 'Unable to load customer data: '
+							$scope.status = 'Unable to load wishes data: '
 									+ error.message;
 						});
 			};
@@ -171,57 +220,67 @@ controllers.controller('WishController', [
 					$scope.wish = custs;
 				}).error(
 						function(error) {
-							$scope.status = 'Unable to load customer data: '
+							$scope.status = 'Unable to load wishes data: '
 									+ error.message;
 						});
 			}
 			;
 		} ]);
 
-controllers
-		.controller(
-				'CompleteWishController',
-				[
-						'$rootScope',
-						'$scope',
-						'WishesFactory',
-						'WishFactory',
-						'SearchByWishIdFactory',
-						'SearchByRacfIdFactory',
-						'RegisterWishFactory',
-						'CompleteWishFactory',
-						'$location',
-						function($rootScope, $scope, WishesFactory,
-								WishFactory, SearchByWishIdFactory,
-								SearchByRacfIdFactory, RegisterWishFactory,
-								CompleteWishFactory, $location) {
+controllers.controller('CompleteWishController', [
+		'$rootScope',
+		'$scope',
+		'WishesFactory',
+		'WishFactory',
+		'SearchByWishIdFactory',
+		'SearchByRacfIdFactory',
+		'RegisterWishFactory',
+		'CompleteWishFactory',
+		'$location',
+		function($rootScope, $scope, WishesFactory, WishFactory,
+				SearchByWishIdFactory, SearchByRacfIdFactory,
+				RegisterWishFactory, CompleteWishFactory, $location) {
 
-							$scope.completeWishId = "";
-							$scope.userName = "";
-							$scope.password = "";
-							$scope.completedWish = {};
-							$scope.completeWishRequest = true;
-							$scope.message = "Only for Be My Santa Volunteers";
+			$scope.completeWishId = "";
+			$scope.userName = "";
+			$scope.password = "";
+			$scope.completedWish = {};
+			$scope.completeWishRequest = true;
+			$scope.message = "Only for Be My Santa Volunteers";
 
-							$scope.completeWishById = function(completeWishId,
-									username, password) {
-								CompleteWishFactory
-										.query(completeWishId, username,
-												password)
-										.success(
-												function(result) {
-													$scope.completedWish = result;
-													$scope.completeWishRequest = false;
-													$scope.message = $scope.completedWish.wishId
-															+ " Completed.";
-												})
-										.error(
-												function(error) {
-													$scope.status = 'Unable to load customer data: '
-															+ error.message;
-												});
-							};
-						} ]);
+			$scope.completeWishById = function(completeWishId, username,
+					password) {
+
+				if (completeWishId == '' || completeWishId == null
+						|| username == '' || username == null || password == ''
+						|| password == null) {
+					$scope.message = "There is an error in the form.";
+				} else {
+
+					CompleteWishFactory.query(completeWishId, username,
+							password).success(
+							function(result) {
+								$scope.completedWish = result;
+								$scope.completeWishRequest = false;
+								$scope.message = $scope.completedWish.wishId
+										+ " Completed.";
+							}).error(
+							function(error) {
+								$scope.status = 'Unable to load wishes data: '
+										+ error.message;
+							});
+				}
+			};
+
+			$scope.canComplete = function(wishStatus) {
+				if (wishStatus.toUpperCase() == ("Registered").toUpperCase()) {
+					return true;
+				} else {
+					return false;
+				}
+			};
+
+		} ]);
 
 controllers
 		.controller(
@@ -254,7 +313,7 @@ controllers
 										})
 										.error(
 												function(error) {
-													$scope.status = 'Unable to load customer data: '
+													$scope.status = 'Unable to load wishes data: '
 															+ error.message;
 												});
 							};
@@ -276,19 +335,35 @@ controllers.controller('SearchWishByIdController', [
 				RegisterWishFactory, $location) {
 
 			$scope.inputWishId = "";
+			$scope.showWishTable = false;
+			$scope.message = '';
 
 			$scope.getWish = function(inputWishId) {
 				SearchByWishIdFactory.query(inputWishId).success(
 						function(result) {
 							$scope.wishes = result;
-							$scope.message = $scope.wishes.length
-									+ " Results Found.";
+							$scope.message = " Results Found.";
+							$scope.showWishTable = true;
 						}).error(
 						function(error) {
-							$scope.status = 'Unable to load customer data: '
+							$scope.status = 'Unable to load wishes data: '
 									+ error.message;
 						});
 			};
+
+			$scope.canComplete = function(wish) {
+
+				if (wish != null && wish != '') {
+
+					if (wish.wishStatus.toUpperCase() == ("Registered")
+							.toUpperCase()) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			};
+
 		} ]);
 
 controllers.controller('SearchWishByRacfIdController', [
@@ -315,7 +390,7 @@ controllers.controller('SearchWishByRacfIdController', [
 									+ " Results Found.";
 						}).error(
 						function(error) {
-							$scope.status = 'Unable to load customer data: '
+							$scope.status = 'Unable to load wishes data: '
 									+ error.message;
 						});
 			};

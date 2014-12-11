@@ -1,5 +1,5 @@
-<div id="wishesContainer" ng-model="wishes" style="display: inline-block;"
-	ng-show="!wishRegisterRequest">
+<div id="wishesContainer" ng-model="wishes"
+	style="display: inline-block;" ng-show="!wishRegisterRequest">
 	<table id="wishTable" class="wishesTable">
 		<thead>
 			<tr>
@@ -24,6 +24,7 @@
 		<!-- TABLE BODY: MAIN CONTENT-->
 		<tbody>
 			<tr ng-repeat="wish in wishes">
+				<!-- 				| offset: currentPage*itemsPerPage | limitTo: itemsPerPage" -->
 				<td>{{wish.wishId}}</td>
 				<td>{{wish.childName}}</td>
 				<td>{{wish.childGender}}</td>
@@ -38,16 +39,27 @@
 					id="submitWish" value="Register" type="submit"
 					ng-click="registerWishForm(wish)"
 					style="width: 66px; height: 20px;"></td>
-				<td ng-show="canComplete(wish.wishStatus)">
-					<button onclick="location.href='#/markWishComplete'"
-						id="completeWish" value="Complete" type="submit"
-						style="width: 66px; height: 20px;">Complete</button>
-				</td>
 			</tr>
 		</tbody>
 
 		<!-- TABLE FOOTER-->
 		<tfoot>
+			<tr>
+				<!-- 				<td colspan="3">
+					<div class="pagination">
+						<ul>
+							<li ng-class="prevPageDisabled()"><a href
+								ng-click="prevPage()">« Prev</a></li>
+							<li ng-repeat="n in range()"
+								ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+								<a href="#">{{n+1}}</a>
+							</li>
+							<li ng-class="nextPageDisabled()"><a href
+								ng-click="nextPage()">Next »</a></li>
+						</ul>
+					</div>
+ 				</td> -->
+			</tr>
 			<tr>
 				<td colspan="10">Copyright &#9400 2014 Disha Works.</td>
 			</tr>
@@ -162,5 +174,6 @@
 			</div>
 		</form>
 	</section>
+
 </div>
 
