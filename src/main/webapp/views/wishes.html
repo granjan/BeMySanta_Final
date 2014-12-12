@@ -23,8 +23,8 @@
 
 		<!-- TABLE BODY: MAIN CONTENT-->
 		<tbody>
-			<tr ng-repeat="wish in wishes">
-				<!-- 				| offset: currentPage*itemsPerPage | limitTo: itemsPerPage" -->
+			<tr
+				ng-repeat="wish in wishes | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
 				<td>{{wish.wishId}}</td>
 				<td>{{wish.childName}}</td>
 				<td>{{wish.childGender}}</td>
@@ -45,20 +45,26 @@
 		<!-- TABLE FOOTER-->
 		<tfoot>
 			<tr>
-				<!-- 				<td colspan="3">
+				<td colspan="12">
 					<div class="pagination">
-						<ul>
-							<li ng-class="prevPageDisabled()"><a href
-								ng-click="prevPage()">« Prev</a></li>
-							<li ng-repeat="n in range()"
-								ng-class="{active: n == currentPage}" ng-click="setPage(n)">
-								<a href="#">{{n+1}}</a>
-							</li>
-							<li ng-class="nextPageDisabled()"><a href
-								ng-click="nextPage()">Next »</a></li>
-						</ul>
-					</div>
- 				</td> -->
+						<button class="footerButtons" ng-class="prevPageDisabled()"
+							ng-click="prevPage()"><< Prev</button>
+						<button class="footerButtons" ng-repeat="n in range()"
+							ng-click="setPage(n)">{{n+1}}</button>
+						<button class="footerButtons" ng-class="nextPageDisabled()"
+							ng-click="nextPage()">Next >></button>
+						<!-- 						<ul> -->
+						<!-- 							<li ng-class="prevPageDisabled()"><a href -->
+						<!-- 								ng-click="prevPage()">« Prev</a></li> -->
+						<!-- 							<li ng-repeat="n in range()" -->
+						<!-- 								ng-class="{active: n == currentPage}" ng-click="setPage(n)"> -->
+						<!-- 								<a href="#">{{n+1}}</a> -->
+						<!-- 							</li> -->
+						<!-- 							<li ng-class="nextPageDisabled()"><a href -->
+						<!-- 								ng-click="nextPage()">Next »</a></li> -->
+						<!-- 						</ul> -->
+						<!-- 					</div> -->
+				</td>
 			</tr>
 			<tr>
 				<td colspan="10">Copyright &#9400 2014 Disha Works.</td>
@@ -76,7 +82,7 @@
 
 	<section id="container" ng-show="!wishRegistered">
 		<form name="hongkiat" id="hongkiat-form" method="put"
-			ng-model="wishToRegister">
+			ng-model="wishToRegister" ng-show="!wishRegistered">
 			<div id="wrapping" class="clearfix">
 				<section id="aligned">
 					<input type="text" name="wishId" id="wishId" placeholder="Wish Id"
@@ -129,7 +135,8 @@
 	</section>
 
 	<section id="container" ng-show="wishRegistered">
-		<form name="hongkiat" id="hongkiat-form" ng-model="registeredWish">
+		<form name="hongkiat" id="hongkiat-form" ng-model="registeredWish"
+			ng-show="wishRegistered">
 			<div id="wrapping" class="clearfix">
 				<section id="aligned">
 					<input type="text" name="wishId" id="wishId" placeholder="Wish Id"

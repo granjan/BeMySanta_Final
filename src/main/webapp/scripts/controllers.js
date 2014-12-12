@@ -2,6 +2,13 @@
 
 var controllers = angular.module('beMySanta.controllers', [ 'ngResource' ]);
 
+controllers.filter('offset', function() {
+	return function(input, start) {
+		start = parseInt(start, 10);
+		return input.slice(start);
+	};
+});
+
 controllers
 		.controller(
 				'WishesListController',
@@ -28,53 +35,60 @@ controllers
 							$scope.message = "";
 
 							/* Changes for pagination of the results */
-							// $scope.itemsPerPage = 5;
-							// $scope.currentPage = 0;
-							//
-							// $scope.range = function() {
-							// var rangeSize = 5;
-							// var ret = [];
-							// var start;
-							//
-							// start = $scope.currentPage;
-							// if (start > $scope.pageCount() - rangeSize) {
-							// start = $scope.pageCount() - rangeSize + 1;
-							// }
-							//
-							// for (var i = start; i < start + rangeSize; i++) {
-							// ret.push(i);
-							// }
-							// return ret;
-							// };
-							//
-							// $scope.prevPage = function() {
-							// if ($scope.currentPage > 0) {
-							// $scope.currentPage--;
-							// }
-							// };
-							// $scope.prevPageDisabled = function() {
-							// return $scope.currentPage === 0 ? "disabled"
-							// : "";
-							// };
-							//
-							// $scope.pageCount = function() {
-							// return Math.ceil($scope.wishes.length
-							// / $scope.itemsPerPage) - 1;
-							// };
-							// $scope.nextPage = function() {
-							// if ($scope.currentPage < $scope.pageCount()) {
-							// $scope.currentPage++;
-							// }
-							// };
-							// $scope.nextPageDisabled = function() {
-							// return $scope.currentPage === $scope
-							// .pageCount() ? "disabled" : "";
-							// };
-							//
-							// $scope.setPage = function(n) {
-							// $scope.currentPage = n;
-							// };
-							//
+							$scope.itemsPerPage = 5;
+							$scope.currentPage = 0;
+
+							$scope.range = function() {
+								var rangeSize = 5;
+								var ret = [];
+								var start;
+								var initPage = 0;
+
+								start = $scope.currentPage;
+								if (start > ($scope.pageCount() - rangeSize)) {
+									start = $scope.pageCount() - rangeSize + 1;
+								}
+
+								if (start < 0) {
+									initPage = 0;
+								} else {
+									initPage = start;
+								}
+
+								for (var i = initPage; i < initPage + rangeSize; i++) {
+									ret.push(i);
+								}
+								return ret;
+							};
+
+							$scope.prevPage = function() {
+								if ($scope.currentPage > 0) {
+									$scope.currentPage--;
+								}
+							};
+							$scope.prevPageDisabled = function() {
+								return $scope.currentPage === 0 ? "disabled"
+										: "";
+							};
+
+							$scope.pageCount = function() {
+								return Math.ceil($scope.wishes.length
+										/ $scope.itemsPerPage) - 1;
+							};
+							$scope.nextPage = function() {
+								if ($scope.currentPage < $scope.pageCount()) {
+									$scope.currentPage++;
+								}
+							};
+							$scope.nextPageDisabled = function() {
+								return $scope.currentPage === $scope
+										.pageCount() ? "disabled" : "";
+							};
+
+							$scope.setPage = function(n) {
+								$scope.currentPage = n;
+							};
+
 							/* End of changes for pagination */
 							function getWishes() {
 								WishesFactory
@@ -404,12 +418,24 @@ controllers.controller('IntroductionPageController', [
 		'SearchByWishIdFactory',
 		'SearchByRacfIdFactory',
 		'RegisterWishFactory',
+		'WishesCountFactory',
 		'$location',
 		function($rootScope, $scope, WishesFactory, WishFactory,
 				SearchByWishIdFactory, SearchByRacfIdFactory,
-				RegisterWishFactory, $location) {
+				RegisterWishFactory, WishesCountFactory, $location) {
 
 			$scope.message = "Blah Blah";
+			$scope.wishesCount = {};
+
+			$scope.wishesCount = function() {
+				WishesCountFactory.query().success(function(result) {
+					$scope.wishesCount = result;
+				}).error(
+						function(error) {
+							$scope.status = 'Unable to load wishes data: '
+									+ error.message;
+						});
+			};
 
 		} ]);
 

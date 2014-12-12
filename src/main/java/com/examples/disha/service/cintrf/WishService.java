@@ -5,6 +5,7 @@ import java.util.List;
 import com.examples.disha.domain.CompleteRequest;
 import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
+import com.examples.disha.domain.WishesStatusCount;
 
 public interface WishService {
 
@@ -33,4 +34,6 @@ public interface WishService {
 	Wish completeWish(CompleteRequest request);
 
 	List<Volunteer> getAllVolunteers();
+
+	WishesStatusCount getWishesCount();
 }

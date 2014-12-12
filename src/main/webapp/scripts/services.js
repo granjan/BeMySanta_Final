@@ -84,11 +84,11 @@ services.factory('CompleteWishFactory',
 					return wishFactory;
 				} ]);
 
-services.factory('ContactsFactory', [ '$http', function($http) {
+services.factory('WishesCountFactory', [ '$http', function($http) {
 	var wishFactory = {};
 
 	wishFactory.query = function() {
-		return $http.get(baseUrl + '/bemysanta/web/wishes/getAllContacts/');
+		return $http.get(baseUrl + '/bemysanta/web/wishes/getWishesCount/');
 	};
 	return wishFactory;
 } ]);

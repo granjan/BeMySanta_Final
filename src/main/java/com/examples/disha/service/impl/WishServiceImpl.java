@@ -6,6 +6,7 @@ import java.util.List;
 import com.examples.disha.domain.CompleteRequest;
 import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
+import com.examples.disha.domain.WishesStatusCount;
 import com.examples.disha.repository.contract.WishRepository;
 import com.examples.disha.service.cintrf.WishService;
 import com.google.inject.Inject;
@@ -98,6 +99,13 @@ public class WishServiceImpl implements WishService {
 		List<Volunteer> allVolunteers = new ArrayList<Volunteer>();
 		allVolunteers = wishRepository.getAllVolunteers();
 		return allVolunteers;
+	}
+
+	@Override
+	public WishesStatusCount getWishesCount() {
+		WishesStatusCount count = new WishesStatusCount();
+		count = wishRepository.getWishesCount();
+		return count;
 	}
 
 }

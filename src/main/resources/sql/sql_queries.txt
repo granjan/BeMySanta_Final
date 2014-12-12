@@ -3,3 +3,9 @@ CREATE TABLE WISH(WISHID INTEGER not null primary key, CHILDNAME VARCHAR(50), CH
 CREATE TABLE VOLUNTEERS(VOLUNTEERID INTEGER not null primary key, VOLUNTEERNAAME VARCHAR(120), USERNAME VARCHAR(50), PASSWORD VARCHAR(50));
 
 CREATE TABLE COMPLETEWISHES(WISHID INTEGER not null primary key, USERNAME VARCHAR(50), DATETIME VARCHAR(100));
+
+select count(*) from wish where wishstatus like 'registered';
+
+select count(*) from wish where wishstatus like 'incomplete';
+
+select count(*) from wish where wishstatus like 'completed';

@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
+import com.examples.disha.domain.WishesStatusCount;
 
 public class DBSelectOperations {
 
@@ -293,6 +294,45 @@ public class DBSelectOperations {
 			e.printStackTrace();
 		}
 		return allVolunteers;
+	}
+
+	public WishesStatusCount getWishesCount(String dataBase) {
+		WishesStatusCount count = new WishesStatusCount();
+		int completeCount = 0;
+		int incompleteCount = 0;
+		int registeredCount = 0;
+		try {
+			Connection connection = new CreateConnection()
+					.getConnection(dataBase);
+			PreparedStatement regPs = connection
+					.prepareStatement("select count(*) from wish where wishstatus like 'registered'");
+			ResultSet regRs = regPs.executeQuery();
+			while (regRs.next()) {
+				registeredCount = regRs.getInt(1);
+			}
+			PreparedStatement comPs = connection
+					.prepareStatement("select count(*) from wish where wishstatus like 'completed'");
+			ResultSet comRs = comPs.executeQuery();
+			while (comRs.next()) {
+				completeCount = comRs.getInt(1);
+			}
+
+			PreparedStatement incomPs = connection
+					.prepareStatement("select count(*) from wish where wishstatus like 'incomplete'");
+			ResultSet incomRs = incomPs.executeQuery();
+			while (incomRs.next()) {
+				incompleteCount = incomRs.getInt(1);
+			}
+			count = new WishesStatusCount(completeCount, incompleteCount,
+					registeredCount);
+			connection.close();
+			return count;
+		} catch (Exception e) {
+			System.err.println("Cannot connect to database server");
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 }

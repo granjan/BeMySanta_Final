@@ -1,4 +1,4 @@
-<div id="wishesContainer" ng-model="wishes" style="display: inline-block;">
+<div id="wishesContainer" ng-model="wishes">
 	<table id="wishTable" class="wishesTable">
 		<thead>
 			<tr>
@@ -37,6 +37,16 @@
 
 		<!-- TABLE FOOTER-->
 		<tfoot>
+			<tr>
+				<td colspan="12">
+					<div class="pagination">
+						<button ng-class="prevPageDisabled()" ng-click="prevPage()">«
+							Prev</button>
+						<button ng-repeat="n in range()" ng-click="setPage(n)">{{n+1}}</button>
+						<button ng-class="nextPageDisabled()" ng-click="nextPage()">Next
+							»</button>
+				</td>
+			</tr>
 			<tr>
 				<td colspan="10">Copyright &#9400 2014 Disha Works.</td>
 			</tr>

@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 import com.examples.disha.domain.CompleteRequest;
 import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
+import com.examples.disha.domain.WishesStatusCount;
 import com.examples.disha.service.cintrf.WishService;
 import com.google.inject.Inject;
 
@@ -124,6 +125,16 @@ public class WishRestService {
 		List<Volunteer> allVolunteers = new ArrayList<Volunteer>();
 		allVolunteers = wishService.getAllVolunteers();
 		return allVolunteers;
+	}
+
+	@GET
+	@Path("getWishesCount")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public WishesStatusCount getWishesCount() {
+		WishesStatusCount count = new WishesStatusCount();
+		count = wishService.getWishesCount();
+		return count;
 	}
 
 }

@@ -9,6 +9,7 @@ import com.examples.disha.database.DBSelectOperations;
 import com.examples.disha.database.DBUpdateOperations;
 import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
+import com.examples.disha.domain.WishesStatusCount;
 import com.examples.disha.repository.contract.WishRepository;
 import com.google.inject.Singleton;
 
@@ -111,5 +112,12 @@ public class WishRepositoryImpl implements WishRepository {
 		List<Volunteer> allVolunteers = new ArrayList<Volunteer>();
 		allVolunteers = this.dbso.getAllVolunteers(dataBase);
 		return allVolunteers;
+	}
+
+	@Override
+	public WishesStatusCount getWishesCount() {
+		WishesStatusCount count = new WishesStatusCount();
+		count = this.dbso.getWishesCount(dataBase);
+		return count;
 	}
 }

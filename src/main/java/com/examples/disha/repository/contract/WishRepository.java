@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.examples.disha.domain.Volunteer;
 import com.examples.disha.domain.Wish;
+import com.examples.disha.domain.WishesStatusCount;
 
 public interface WishRepository {
 
@@ -36,4 +37,6 @@ public interface WishRepository {
 	boolean validateVolunteer(String userName, String password);
 
 	List<Volunteer> getAllVolunteers();
+
+	WishesStatusCount getWishesCount();
 }
