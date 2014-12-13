@@ -301,6 +301,7 @@ public class DBSelectOperations {
 		int completeCount = 0;
 		int incompleteCount = 0;
 		int registeredCount = 0;
+		int totalCount = 0;
 		try {
 			Connection connection = new CreateConnection()
 					.getConnection(dataBase);
@@ -323,8 +324,15 @@ public class DBSelectOperations {
 			while (incomRs.next()) {
 				incompleteCount = incomRs.getInt(1);
 			}
+
+			PreparedStatement totalPs = connection
+					.prepareStatement("select count(*) from wish");
+			ResultSet totalRs = totalPs.executeQuery();
+			while (totalRs.next()) {
+				totalCount = totalRs.getInt(1);
+			}
 			count = new WishesStatusCount(completeCount, incompleteCount,
-					registeredCount);
+					registeredCount, totalCount);
 			connection.close();
 			return count;
 		} catch (Exception e) {

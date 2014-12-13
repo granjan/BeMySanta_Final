@@ -410,34 +410,126 @@ controllers.controller('SearchWishByRacfIdController', [
 			};
 		} ]);
 
-controllers.controller('IntroductionPageController', [
-		'$rootScope',
-		'$scope',
-		'WishesFactory',
-		'WishFactory',
-		'SearchByWishIdFactory',
-		'SearchByRacfIdFactory',
-		'RegisterWishFactory',
-		'WishesCountFactory',
-		'$location',
-		function($rootScope, $scope, WishesFactory, WishFactory,
-				SearchByWishIdFactory, SearchByRacfIdFactory,
-				RegisterWishFactory, WishesCountFactory, $location) {
+controllers
+		.controller(
+				'IntroductionPageController',
+				[
+						'$rootScope',
+						'$scope',
+						'WishesFactory',
+						'WishFactory',
+						'SearchByWishIdFactory',
+						'SearchByRacfIdFactory',
+						'RegisterWishFactory',
+						'WishesCountFactory',
+						'$location',
+						function($rootScope, $scope, WishesFactory,
+								WishFactory, SearchByWishIdFactory,
+								SearchByRacfIdFactory, RegisterWishFactory,
+								WishesCountFactory, $location) {
 
-			$scope.message = "Blah Blah";
-			$scope.wishesCount = {};
+							$scope.message = "Blah Blah";
+							$scope.wishesCount = {};
 
-			$scope.wishesCount = function() {
-				WishesCountFactory.query().success(function(result) {
-					$scope.wishesCount = result;
-				}).error(
-						function(error) {
-							$scope.status = 'Unable to load wishes data: '
-									+ error.message;
-						});
-			};
+							$scope.wishesCount = function() {
+								WishesCountFactory
+										.query()
+										.success(function(result) {
+											$scope.wishesCount = result;
 
-		} ]);
+											$scope.showWishesBar();
+										})
+										.error(
+												function(error) {
+													$scope.status = 'Unable to load wishes data: '
+															+ error.message;
+												});
+							};
+
+							$scope.showWishesBar = function() {
+								$('#bar-1')
+										.jqbar(
+												{
+													label : 'Completed Wishes',
+													value : Math
+															.floor(($scope.wishesCount.completeWishes * 100)
+																	/ $scope.wishesCount.totalWishes),
+													barColor : '#3C8301' // '#D64747'
+												});
+								$('#bar-2')
+										.jqbar(
+												{
+													label : 'Incomplete Wishes',
+													value : Math
+															.ceil(($scope.wishesCount.incompleteWishes * 100)
+																	/ $scope.wishesCount.totalWishes),
+													barColor : '#EA0200'// '#FF681F'
+												});
+								$('#bar-3')
+										.jqbar(
+												{
+													label : 'Registered Wishes',
+													value : Math
+															.ceil(($scope.wishesCount.registeredWishes * 100)
+																	/ $scope.wishesCount.totalWishes),
+													barColor : '#ea805c'
+												});
+								$('#bar-4').jqbar({
+									label : 'HTML5',
+									value : 50,
+									barColor : '#88bbc8'
+								});
+								$('#bar-5').jqbar({
+									label : 'CSS3',
+									value : 60,
+									barColor : '#939393'
+								});
+								$('#bar-6').jqbar({
+									label : 'jQuery',
+									value : 70,
+									barColor : '#3a89c9'
+								});
+								$('#bar-7').jqbar({
+									label : 'Wal',
+									value : 90,
+									barColor : '#D64747',
+									orientation : 'v'
+								});
+								$('#bar-8').jqbar({
+									label : 'Ohi',
+									barColor : '#FF681F',
+									value : 70,
+									orientation : 'v'
+								});
+								$('#bar-9').jqbar({
+									label : 'Song',
+									barColor : '#ea805c',
+									value : 50,
+									orientation : 'v'
+								});
+								$('#bar-10').jqbar({
+									label : 'Pisho',
+									barColor : '#88bbc8',
+									value : 90,
+									orientation : 'v'
+								});
+								$('#bar-11').jqbar({
+									label : 'Mara',
+									barColor : '#939393',
+									value : 70,
+									orientation : 'v'
+								});
+								$('#bar-12').jqbar({
+									label : 'Dagha',
+									barColor : '#3a89c9',
+									value : 50,
+									orientation : 'v'
+								});
+							};
+
+							$scope.wishesCount();
+
+						} ]);
 
 controllers
 		.controller(

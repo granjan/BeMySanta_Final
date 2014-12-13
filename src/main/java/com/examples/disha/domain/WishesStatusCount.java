@@ -4,17 +4,19 @@ public class WishesStatusCount {
 	private int completeWishes;
 	private int incompleteWishes;
 	private int registeredWishes;
+	private int totalWishes;
 
 	public WishesStatusCount() {
 		super();
 	}
 
 	public WishesStatusCount(int completeWishes, int incompleteWishes,
-			int registeredWishes) {
+			int registeredWishes, int totalWishes) {
 		super();
 		this.completeWishes = completeWishes;
 		this.incompleteWishes = incompleteWishes;
 		this.registeredWishes = registeredWishes;
+		this.totalWishes = totalWishes;
 	}
 
 	public int getCompleteWishes() {
@@ -39,6 +41,14 @@ public class WishesStatusCount {
 
 	public void setRegisteredWishes(int registeredWishes) {
 		this.registeredWishes = registeredWishes;
+	}
+
+	public int getTotalWishes() {
+		return totalWishes;
+	}
+
+	public void setTotalWishes(int totalWishes) {
+		this.totalWishes = totalWishes;
 	}
 
 }

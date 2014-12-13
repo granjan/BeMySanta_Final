@@ -3,6 +3,7 @@
 var services = angular.module('beMySanta.services', [ 'ngResource' ]);
 
 var baseUrl = 'http://localhost:8080';
+//var baseUrl = 'http://delmw16410:8080'; uncomment this for pointing the service to the hot system
 
 services.factory('WishesFactory', [ '$http', function($http) {
 	var wishesFactory = {};
@@ -83,6 +84,15 @@ services.factory('CompleteWishFactory',
 					};
 					return wishFactory;
 				} ]);
+
+services.factory('ContactsFactory', [ '$http', function($http) {
+	var wishFactory = {};
+
+	wishFactory.query = function() {
+		return $http.get(baseUrl + '/bemysanta/web/wishes/getAllContacts/');
+	};
+	return wishFactory;
+} ]);
 
 services.factory('WishesCountFactory', [ '$http', function($http) {
 	var wishFactory = {};
